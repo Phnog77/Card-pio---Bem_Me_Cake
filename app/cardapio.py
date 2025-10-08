@@ -22,7 +22,7 @@ def carregar():
     bebidas = list(produtos.find({"type": "bebida"}))
 
     return render_template(
-        "index",
+        "index.html",
         bolos_caseiros=bolos_caseiros,
         doces=doces,
         bolos_de_festa=bolos_de_festa,
