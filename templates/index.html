@@ -291,7 +291,7 @@
     <h3 class="category-title" id="caseiros">Bolos Caseiros</h3>
     {% for bolo in bolos_caseiros %}
       <div class="card">
-        <img src="{{ url_for('static', filename='imgs/' + 'bolo_' + bolo.img) }}" alt="{{ bolo.nome }}">
+        <img src="{{ url_for('static', filename='imgs/' + 'bolo_' + bolo.image) }}" alt="{{ bolo.nome }}">
         <div class="card-content">
           <h4>{{ bolo.id }}. {{ bolo.nome }}</h4>
           <p><em>{{ bolo.descricao }}</em></p>
@@ -304,7 +304,7 @@
     <h3 class="category-title" id="bolos_de_festa">Bolos de Festa</h3>
     {% for bolo in bolos_de_festa %}
       <div class="card">
-        <img src="{{ url_for('static', filename='imgs/' + 'bolo_' + bolo.img) }}" alt="{{ bolo.nome }}">
+        <img src="{{ url_for('static', filename='imgs/' + 'bolo_' + bolo.image) }}" alt="{{ bolo.nome }}">
         <div class="card-content">
           <h4>{{ bolo.id }}. {{ bolo.nome }}</h4>
           <p><em>{{ bolo.descricao }}</em></p>
@@ -317,7 +317,7 @@
     <h3 class="category-title" id="doces">Doces</h3>
     {% for doce in doces %}
       <div class="card">
-        <img src="{{ url_for('static', filename='imgs/' + 'doce_' + doce.img) }}" alt="{{ doce.nome }}">
+        <img src="{{ url_for('static', filename='imgs/' + 'doce_' + doce.image) }}" alt="{{ doce.nome }}">
         <div class="card-content">
           <h4>{{ doce.id }}. {{ doce.nome }}</h4>
           <p><em>{{ doce.descricao }}</em></p>
@@ -330,7 +330,7 @@
     <h3 class="category-title" id="recheios">Recheios</h3>
     {% for recheio in recheios %}
       <div class="card">
-        <img src="{{ url_for('static', filename='imgs/' + recheio.img) }}" alt="{{ recheio.nome }}">
+        <img src="{{ url_for('static', filename='imgs/' + recheio.image) }}" alt="{{ recheio.nome }}">
         <div class="card-content">
           <h4>{{ recheio.id }}. {{ recheio.nome }}</h4>
           <p><em>{{ recheio.descricao }}</em></p>
@@ -343,7 +343,7 @@
     <h3 class="category-title" id="bolo_de_pote">Bolo de Pote</h3>
     {% for pote in bolos_de_pote %}
       <div class="card">
-        <img src="{{ url_for('static', filename='imgs/' + pote.img) }}" alt="{{ pote.nome }}">
+        <img src="{{ url_for('static', filename='imgs/' + pote.image) }}" alt="{{ pote.nome }}">
         <div class="card-content">
           <h4>{{ pote.id }}. {{ pote.nome }}</h4>
           <p><em>{{ pote.descricao }}</em></p>
@@ -356,7 +356,7 @@
     <h3 class="category-title" id="novidades">Novidades</h3>
     {% for novidade in novidades %}
       <div class="card">
-        <img src="{{ url_for('static', filename='imgs/' + novidade.img) }}" alt="{{ novidade.nome }}">
+        <img src="{{ url_for('static', filename='imgs/' + novidade.image) }}" alt="{{ novidade.nome }}">
         <div class="card-content">
           <h4>{{ novidade.id }}. {{ novidade.nome }}</h4>
           <p><em>{{ novidade.descricao }}</em></p>
@@ -369,7 +369,7 @@
     <h3 class="category-title" id="bebidas">Bebidas</h3>
     {% for bebida in bebidas %}
       <div class="card">
-        <img src="{{ url_for('static', filename='imgs/' + bebida.img) }}" alt="{{ bebida.nome }}">
+        <img src="{{ url_for('static', filename='imgs/' + bebida.image) }}" alt="{{ bebida.nome }}">
         <div class="card-content">
           <h4>{{ bebida.id }}. {{ bebida.nome }}</h4>
           <p><em>{{ bebida.descricao }}</em></p>
