@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BANANA CARAMELIZADA - Detalhes</title>
+  <title>{{ name }} - Detalhes</title>
   <style>
     body { font-family: Arial, sans-serif; margin:0; background:#fff5f7; color:#333; background-image: url('imgs/WhatsApp Image 2025-10-01 at 23.03.11.jpeg'); background-size:cover; background-position:center; }
     header { background: #ff4da6; color: white; padding: 15px 20px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 6px rgba(0,0,0,0.2); position: sticky; top:0; z-index:100; }
@@ -13,11 +13,11 @@
     .card img { flex:1 1 300px; max-width:350px; border-radius:12px; object-fit:cover; }
     .card-content { flex:2 1 400px; }
     .card-content h2 { color:#ff4da6; margin-top:0; font-size:26px; }
-    .precos { background:#fff0f6; border-left:5px solid #ff4da6; padding:10px; margin:15px 0; border-radius:8px; }
+    .precos { background:#f/home/biglinux/Card-pio---Bem_Me_Cake/templates/Bolo_de_BananaCaramelizada.htmlff0f6; border-left:5px solid #ff4da6; padding:10px; margin:15px 0; border-radius:8px; }
     .precos p { margin:5px 0; font-weight:bold; }
     .ingredientes { margin:15px 0; }
     .ingredientes span { display:inline-block; background:#ffe6f0; padding:6px 12px; margin:4px; border-radius:20px; font-size:14px; }
-    .descricao { margin-top:20px; font-size:15px; line-height:1.6; }
+    .descricao { margin-top:20px; font-size:1 - Detalhes</title5px; line-height:1.6; }
     .btn { display:inline-block; padding:12px 25px; margin-top:20px; font-size:16px; font-weight:bold; text-decoration:none; color:#fff; background-color:#ff4da6; border-radius:8px; transition:background-color 0.3s; }
     .btn:hover { background-color:#e60073; }
     @media (max-width:768px) { .card { flex-direction:column; align-items:center; } .card img { width:100%; } }
@@ -30,20 +30,20 @@
   </header>
   <div class="container">
     <div class="card">
-      <img src="imgs/Bolo_BananaCaramelizado.jpg" alt="BANANA CARAMELIZADA">
+      <img src="/static/imgs/{{ image }}.jpg" alt="{{ name }}">
       <div class="card-content">
-        <h2>BANANA CARAMELIZADA</h2>
+        <h2>{{ name }}</h2>
         <div class="precos">
-          <p>📍 Pequeno (P): R$ 30,00  --  Adcional de cobertura (P): </p>
-          <p>📍 Grande (G): R$ 44,00  --  Adcional de cobertura (G): </p>
+          <p>📍 Pequeno (P): {{ value_s}} --  Adcional de cobertura (P): </p>
+          <p>📍 Grande (G): {{ value_b }} --  Adcional de cobertura (G): </p>
         </div>
         <div class="ingredientes">
           <strong>Ingredientes:</strong><br>
-          <span>Açúcar</span> <span>Canela</span> <span>Farinha</span> <span>Fermento</span> <span>Leite</span> <span>Óleo e Ovos - Calda: Açúcar e Água</span>
+          {% for v in ingredients %}
+          <span>{{ v }}</span>span>Açúcar</span> <span>Canela</span> <span>Farinha</span> <span>Fermento</span> <span>Leite</span> <span>Óleo e Ovos - Calda: Açúcar e Água</span>
+          {{% endfor %}}
         </div>
-        <div class="descricao">
-          Doce e perfumada: fatias de banana caramelizadas criam uma cobertura cheia de personalidade.
-        </div>
+        <div class="descricao">{{ description }}</div>
       </div>
     </div>
   </div>
