@@ -290,94 +290,93 @@
     <!-- 🍰 BOLOS CASEIROS -->
     <h3 class="category-title" id="caseiros">Bolos Caseiros</h3>
     {% for bolo in bolos_caseiros %}
-    <div class="card">
-      <img src="{{ url_for('static', filename='imgs/' + 'bolo_' + bolo['img']) }}" alt="{{ bolo['nome'] }}">
-      <div class="card-content">
-        <h4>{{ bolo['id'] }}. {{ bolo['nome'] }}</h4>
-        <p><em>{{ bolo['descricao'] }}</em></p>
-        <a href="{{ bolo['link'] }}" class="btn">Saiba Mais</a>
+      <div class="card">
+        <img src="{{ url_for('static', filename='imgs/' + 'bolo_' + bolo.img) }}" alt="{{ bolo.nome }}">
+        <div class="card-content">
+          <h4>{{ bolo.id }}. {{ bolo.nome }}</h4>
+          <p><em>{{ bolo.descricao }}</em></p>
+          <a href="{{ bolo.link }}" class="btn">Saiba Mais</a>
+        </div>
       </div>
-    </div>
     {% endfor %}
 
     <!-- 🎂 BOLOS DE FESTA -->
     <h3 class="category-title" id="bolos_de_festa">Bolos de Festa</h3>
     {% for bolo in bolos_de_festa %}
-    <div class="card">
-      <img src="{{ url_for('static', filename='imgs/' + 'bolo_' + bolo['img']) }}" alt="{{ bolo['nome'] }}">
-      <div class="card-content">
-        <h4>{{ bolo['id'] }}. {{ bolo['nome'] }}</h4>
-        <p><em>{{ bolo['descricao'] }}</em></p>
-        <a href="{{ bolo['link'] }}" class="btn">Saiba Mais</a>
+      <div class="card">
+        <img src="{{ url_for('static', filename='imgs/' + 'bolo_' + bolo.img) }}" alt="{{ bolo.nome }}">
+        <div class="card-content">
+          <h4>{{ bolo.id }}. {{ bolo.nome }}</h4>
+          <p><em>{{ bolo.descricao }}</em></p>
+          <a href="{{ bolo.link }}" class="btn">Saiba Mais</a>
+        </div>
       </div>
-    </div>
     {% endfor %}
 
     <!-- 🍬 DOCES -->
     <h3 class="category-title" id="doces">Doces</h3>
     {% for doce in doces %}
-    <div class="card">
-      <img src="{{ url_for('static', filename='imgs/' + 'doce_' + doce['img']) }}" alt="{{ doce['nome'] }}">
-      <div class="card-content">
-        <h4>{{ doce['id'] }}. {{ doce['nome'] }}</h4>
-        <p><em>{{ doce['descricao'] }}</em></p>
-        <a href="{{ doce['link'] }}" class="btn">Saiba Mais</a>
+      <div class="card">
+        <img src="{{ url_for('static', filename='imgs/' + 'doce_' + doce.img) }}" alt="{{ doce.nome }}">
+        <div class="card-content">
+          <h4>{{ doce.id }}. {{ doce.nome }}</h4>
+          <p><em>{{ doce.descricao }}</em></p>
+          <a href="{{ doce.link }}" class="btn">Saiba Mais</a>
+        </div>
       </div>
-    </div>
     {% endfor %}
 
     <!-- 🍯 RECHEIOS -->
     <h3 class="category-title" id="recheios">Recheios</h3>
     {% for recheio in recheios %}
-    <div class="card">
-      <img src="{{ url_for('static', filename='imgs/' + recheio['img']) }}" alt="{{ recheio['nome'] }}">
-      <div class="card-content">
-        <h4>{{ recheio['id'] }}. {{ recheio['nome'] }}</h4>
-        <p><em>{{ recheio['descricao'] }}</em></p>
-        <a href="{{ recheio['link'] }}" class="btn">Saiba Mais</a>
+      <div class="card">
+        <img src="{{ url_for('static', filename='imgs/' + recheio.img) }}" alt="{{ recheio.nome }}">
+        <div class="card-content">
+          <h4>{{ recheio.id }}. {{ recheio.nome }}</h4>
+          <p><em>{{ recheio.descricao }}</em></p>
+          <a href="{{ recheio.link }}" class="btn">Saiba Mais</a>
+        </div>
       </div>
-    </div>
     {% endfor %}
 
     <!-- 🧁 BOLOS DE POTE -->
     <h3 class="category-title" id="bolo_de_pote">Bolo de Pote</h3>
     {% for pote in bolos_de_pote %}
-    <div class="card">
-      <img src="{{ url_for('static', filename='imgs/' + pote['img']) }}" alt="{{ pote['nome'] }}">
-      <div class="card-content">
-        <h4>{{ pote['id'] }}. {{ pote['nome'] }}</h4>
-        <p><em>{{ pote['descricao'] }}</em></p>
-        <a href="{{ pote['link'] }}" class="btn">Saiba Mais</a>
+      <div class="card">
+        <img src="{{ url_for('static', filename='imgs/' + pote.img) }}" alt="{{ pote.nome }}">
+        <div class="card-content">
+          <h4>{{ pote.id }}. {{ pote.nome }}</h4>
+          <p><em>{{ pote.descricao }}</em></p>
+          <a href="{{ pote.link }}" class="btn">Saiba Mais</a>
+        </div>
       </div>
-    </div>
     {% endfor %}
 
     <!-- 🌟 NOVIDADES -->
     <h3 class="category-title" id="novidades">Novidades</h3>
     {% for novidade in novidades %}
-    <div class="card">
-      <img src="{{ url_for('static', filename='imgs/' + novidade['img']) }}" alt="{{ novidade['nome'] }}">
-      <div class="card-content">
-        <h4>{{ novidade['id'] }}. {{ novidade['nome'] }}</h4>
-        <p><em>{{ novidade['descricao'] }}</em></p>
-        <a href="{{ novidade['link'] }}" class="btn">Saiba Mais</a>
+      <div class="card">
+        <img src="{{ url_for('static', filename='imgs/' + novidade.img) }}" alt="{{ novidade.nome }}">
+        <div class="card-content">
+          <h4>{{ novidade.id }}. {{ novidade.nome }}</h4>
+          <p><em>{{ novidade.descricao }}</em></p>
+          <a href="{{ novidade.link }}" class="btn">Saiba Mais</a>
+        </div>
       </div>
-    </div>
     {% endfor %}
 
     <!-- 🍹 BEBIDAS -->
     <h3 class="category-title" id="bebidas">Bebidas</h3>
     {% for bebida in bebidas %}
-    <div class="card">
-      <img src="{{ url_for('static', filename='imgs/' + bebida['img']) }}" alt="{{ bebida['nome'] }}">
-      <div class="card-content">
-        <h4>{{ bebida['id'] }}. {{ bebida['nome'] }}</h4>
-        <p><em>{{ bebida['descricao'] }}</em></p>
-        <a href="{{ bebida['link'] }}" class="btn">Saiba Mais</a>
+      <div class="card">
+        <img src="{{ url_for('static', filename='imgs/' + bebida.img) }}" alt="{{ bebida.nome }}">
+        <div class="card-content">
+          <h4>{{ bebida.id }}. {{ bebida.nome }}</h4>
+          <p><em>{{ bebida.descricao }}</em></p>
+          <a href="{{ bebida.link }}" class="btn">Saiba Mais</a>
+        </div>
       </div>
-    </div>
     {% endfor %}
-  </div>
 
   <footer id="sobre">
     <div class="footer-container">
