@@ -2,25 +2,28 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"net/http"
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/v2/bson"
 	"go.mongodb.org/mongo-driver/v2/mongo"
 	"go.mongodb.org/mongo-driver/v2/mongo/options"
 )
 
 type Item struct {
-	Name        string   `bson:"name"`
-	SmallPrice  int      `bson:"s_price"`
-	BigPrice    int      `bson:"b_price"`
-	Description string   `bson:"description"`
-	Ingredients []string `bson:"ingredients"`
-	Type        string   `bson:"type"`
-	Image       string   `bson:"image"`
-	Class       string   `bson:"class"`
+	ID          primitive.ObjectID `bson:"_id"`
+	Name        string             `bson:"name"`
+	SmallPrice  int                `bson:"s_price"`
+	BigPrice    int                `bson:"b_price"`
+	Description string             `bson:"description"`
+	Ingredients []string           `bson:"ingredients"`
+	Type        string             `bson:"type"`
+	Image       string             `bson:"image"`
+	Class       string             `bson:"class"`
 	ImageLink   string
 	Url         string
 }
@@ -60,6 +63,8 @@ func main() {
 				log.Fatal(err)
 			}
 
+			v.Url = fmt.Sprintf("https://servidordomal.fun/%s", v.ID)
+			v.ImageLink = fmt.Sprintf("https://servidordomal.fun/static/%s", v.ID)
 			total = append(total, v)
 		}
 
