@@ -56,7 +56,7 @@ func main() {
 
 		cur, err := collection.Find(ctx, bson.M{"type": "bolo"})
 		if err != nil {
-			log.Fatal(err)
+			log.Println(err)
 		}
 
 		var total []Item
@@ -90,7 +90,7 @@ func main() {
 			c.Status(500)
 		}
 
-		v.ImageLink = fmt.Sprintf("https://servidordomal.fun/static/imgs/%s.jpg", id)
+		v.ImageLink = fmt.Sprintf("https://servidordomal.fun/static/imgs/%s.jpg", c.Param("id"))
 
 		c.HTML(200, "ginDetailsTemplate.html", gin.H{"Item": v})
 	})
