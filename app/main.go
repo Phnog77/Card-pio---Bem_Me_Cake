@@ -89,6 +89,8 @@ func main() {
 			log.Println(err)
 			c.Status(500)
 		}
+
+		c.HTML(200, "ginDetailsTemplate.html", gin.H{"Item": v})
 	})
 
 	if err := r.RunTLS(":443", "/etc/letsencrypt/live/servidordomal.fun/fullchain.pem", "/etc/letsencrypt/live/servidordomal.fun/privkey.pem"); err != nil {

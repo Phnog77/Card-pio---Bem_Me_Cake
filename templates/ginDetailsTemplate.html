@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>{{ .Name }} - Detalhes</title>
+  <title>{{ .Item.Name }} - Detalhes</title>
   <style>
     body { font-family: Arial, sans-serif; margin:0; background:#fff5f7; color:#333; background-image: url('imgs/WhatsApp Image 2025-10-01 at 23.03.11.jpeg'); background-size:cover; background-position:center; }
     header { background: #ff4da6; color: white; padding: 15px 20px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 6px rgba(0,0,0,0.2); position: sticky; top:0; z-index:100; }
@@ -30,20 +30,20 @@
   </header>
   <div class="container">
     <div class="card">
-      <img src="{{ .ImageUrl }}" alt="{{ .Name}}">
+      <img src="{{ .Item.ImageUrl }}" alt="{{ .Item.Name}}">
       <div class="card-content">
-        <h2>{{ .Name }}</h2>
+        <h2>{{ .Item.Name }}</h2>
         <div class="precos">
-          <p>📍 Pequeno (P): {{ .SmallPriceF }} --  Adcional de cobertura (P): </p>
-          <p>📍 Grande (G): {{ .BigPriceF }} --  Adcional de cobertura (G): </p>
+          <p>📍 Pequeno (P): {{ .Item.SmallPriceF }} --  Adcional de cobertura (P): </p>
+          <p>📍 Grande (G): {{ .Item.BigPriceF }} --  Adcional de cobertura (G): </p>
         </div>
         <div class="ingredientes">
           <strong>Ingredientes:</strong><br>
-          {{ range .Ingredients }}
+          {{ range .Item.Ingredients }}
           <span>{{ . }}</span>
           {{ end }}
         </div>
-        <div class="descricao">{{ .Description }}</div>
+        <div class="descricao">{{ .Item.Description }}</div>
       </div>
     </div>
   </div>
