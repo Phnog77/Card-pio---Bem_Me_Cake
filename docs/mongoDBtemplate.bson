@@ -5,5 +5,6 @@ b_price : 4600,
 description : "Doce e perfumada: fatias de banana caramelizadas criam uma cobertura cheia de personalidade.",
 ingredients : ["Áçucar", "Canela", "Farinha", "Fermento", "Leite", "Óleo e ovos - Calda: Áçucar e Água"],
 type : "bolo",
-image: "cenoura"
+image: "cenoura",
+class : "caseiro"
 }
