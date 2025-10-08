@@ -48,7 +48,7 @@ func main() {
 	db := client.Database("BemMeCake")
 	collection := db.Collection("items")
 
-	r.Static("/static/imgs", "/static/imgs")
+	r.Static("/static", "./static")
 
 	r.LoadHTMLGlob("templates/*")
 
