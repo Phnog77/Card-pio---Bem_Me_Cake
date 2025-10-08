@@ -54,6 +54,9 @@ func main() {
 
 	r.GET("/", func(c *gin.Context) {
 
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+
 		cur, err := collection.Find(ctx, bson.M{"type": "bolo"})
 		if err != nil {
 			log.Println(err)
@@ -78,6 +81,8 @@ func main() {
 	})
 
 	r.GET("/produto/:id", func(c *gin.Context) {
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
 
 		id, err := bson.ObjectIDFromHex(c.Param("id"))
 		if err != nil {
