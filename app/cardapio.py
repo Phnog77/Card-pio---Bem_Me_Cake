@@ -33,7 +33,7 @@ CORS(app)
 # |
 @app.route("/cardapio/")
 def carregar():
-    
+    return render_template()
 # |
 # |
 # |
