@@ -1,1 +1,9 @@
-{name : "BOLO DE CENOURA", s_price : 3300, b_price : 4600, description : "Doce e perfumada: fatias de banana caramelizadas criam uma cobertura cheia de personalidade.", ingredients : ["Áçucar", "Canela", "Farinha", "Fermento", "Leite", "Óleo e ovos - Calda: Áçucar e Água"], type : "bolo", image: "cenoura"}
+{
+name : "BOLO DE CENOURA",
+s_price : 3300,
+b_price : 4600,
+description : "Doce e perfumada: fatias de banana caramelizadas criam uma cobertura cheia de personalidade.",
+ingredients : ["Áçucar", "Canela", "Farinha", "Fermento", "Leite", "Óleo e ovos - Calda: Áçucar e Água"],
+type : "bolo",
+image: "cenoura"
+}
