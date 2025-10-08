@@ -287,438 +287,94 @@
     </div>
 
       <h3 class="category-title" id="caseiros">Bolos Caseiros</h3>
-    <div class="card">
-      <img src="imgs/Bolo_Cenoura.jpg" alt="Cacau">
-      <div class="card-content">
-        <h4>1. BOLO DE CENOURA <span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Detalhes_Caseiro_BoloDeCenoura.html" class="btn">Saiba Mais</a>
+      {% for bebida in bebidas %}
+      <div class="card">
+        <img src="{{ url_for('static', filename='imgs/' + bebida.img) }}" alt="{{ bebida.nome }}">
+        <div class="card-content">
+          <h4>{{ bebida.id }}. {{ bebida.nome }}</h4>
+          {% for preco in bebida.precos %}
+          <h4>ㅤㅤㅤ <span>{{ preco }}</span></h4>
+          {% endfor %}
+          <p><em>{{ bebida.descricao }}</em></p>
+          <a href="{{ bebida.link }}" class="btn">Saiba Mais</a>
+        </div>
       </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/WhatsApp Image 2025-10-01 at 20.29.23.jpeg" alt="">
-      <div class="card-content">
-        <h4>2. BOLO DE LARANJA <span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_Laranja.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bolo_Limão2.jpg" alt="Dori">
-      <div class="card-content">
-        <h4>3. BOLO DE LIMÃO <span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_Limão.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bolo_Milho.jpeg" alt="Dori">
-      <div class="card-content">
-        <h4>4. BOLO DE MILHO<span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_Milho.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/bolo-de-mandioca-com-coco.jpeg" alt="Dori">
-      <div class="card-content">
-        <h4>5. BOLO DE MANDIOCA <span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_Mandioca.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/WhatsApp Image 2025-10-01 at 20.29.25.jpeg" alt="Dori">
-      <div class="card-content">
-        <h4>6. BOLO DE CHOCOLATE <span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_Chocolate.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bolo_Pamonha.jpg" alt="Dori">
-      <div class="card-content">
-        <h4>7. BOLO DE PAMONHA <span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_Pamonha.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bolo_BananaAveia.jpg" alt="Dori">
-      <div class="card-content">
-        <h4>8. BANANA COM AVEIA <span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_BananacomAveia.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bolo_BananaCaramelizado.jpg" alt="Dori">
-      <div class="card-content">
-        <h4>9. BANANA CARAMELIZADA<span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_BananaCaramelizada.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bolo_Ninho.jpg" alt="Dori">
-      <div class="card-content">
-        <h4>10. NINHO <span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_Ninho.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bolo_Coco.jpg" alt="Dori">
-      <div class="card-content">
-        <h4>11. COCO <span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_Coco.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bolo_Fubá.jpg" alt="Dori">
-      <div class="card-content">
-        <h4>12. BOLO DE FUBÁ<span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_Fuba.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bolo_Churros.jpg" alt="Dori">
-      <div class="card-content">
-        <h4>13. CHURROS <span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_Churros.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bolo_CenouraVegano.jpg" alt="Dori">
-      <div class="card-content">
-        <h4>14. CENOURA VEGANO <span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_CenouraVegano.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bolo_ChocoGlútenLactose.jpg" alt="Dori">
-      <div class="card-content">
-        <h4>15. CHOCOLATE SEM GLUTEM E SEM LACTOSE <span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_ChocolateSemGluteneSemLactose.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bolo_CenGlútenLactose.jpg" alt="Dori">
-      <div class="card-content">
-        <h4>16. CENOURA SEM LACTOSE E SEM GULTEM <span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_CenouraSemLactose_e_Gluten.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/WhatsApp Image 2025-10-01 at 17.04.37.jpeg" alt="Dori">
-      <div class="card-content">
-        <h4>17. BOLO RED VELVET <span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_RedVelvet.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bolo_Formigueiro.jpg" alt="Dori">
-      <div class="card-content">
-        <h4>18. FORMIGUEIRO <span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_Formigueiro.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bolo_ChocolateVegano.jpg" alt="Dori">
-      <div class="card-content">
-        <h4>19. CHOCOLATE VEGANO <span></span></h4>
-        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
-        <a href="Bolo_de_ChocolateVegano.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
+      {% endfor %}
 
     <h3 class="category-title" id="bolos_de_festa">Bolos de Festa</h3>
+    {% for bebida in bebidas %}
     <div class="card">
-      <img src="imgs/Bolo_PãoDeLó.jpg" alt="Dominó">
+      <img src="{{ url_for('static', filename='imgs/' + bebida.img) }}" alt="{{ bebida.nome }}">
       <div class="card-content">
-        <h4>20. PÃO DE LÓ (MASSA BRANCA) <span></span></h4>
-        <p>Ingredientes: Açúcar, Água quente, Baunilha, Farinha, Fermento e Ovos.</p>
+        <h4>{{ bebida.id }}. {{ bebida.nome }}</h4>
+        {% for preco in bebida.precos %}
+        <h4>ㅤㅤㅤ <span>{{ preco }}</span></h4>
+        {% endfor %}
+        <p><em>{{ bebida.descricao }}</em></p>
+        <a href="{{ bebida.link }}" class="btn">Saiba Mais</a>
       </div>
     </div>
-
-    <div class="card">
-      <img src="imgs/Bolo_MassaChocolate.jpg" alt="Holandesa">
-      <div class="card-content">
-        <h4>21. MASSA DE CHOCOLATE <span></span></h4>
-        <p>Ingredientes: Açúcar, Água, Chocolate em pó, Farinha, Fermento, Leite, Óleo e Ovos.</p>
-      </div>
-    </div>
+    {% endfor %}
 
     <h3 class="category-title" id="doces">Doces</h3>
+    {% for bebida in bebidas %}
     <div class="card">
-      <img src="imgs/Brigadeiro.jpg" alt="Preciosa">
+      <img src="{{ url_for('static', filename='imgs/' + bebida.img) }}" alt="{{ bebida.nome }}">
       <div class="card-content">
-        <h4>22. BRIGADEIRO <span></span></h4>
-        <p>Ingredientes: Chocolate em pó, Creme de leite, Glucose de milho, Granulado e Leite condensado.</p>
+        <h4>{{ bebida.id }}. {{ bebida.nome }}</h4>
+        {% for preco in bebida.precos %}
+        <h4>ㅤㅤㅤ <span>{{ preco }}</span></h4>
+        {% endfor %}
+        <p><em>{{ bebida.descricao }}</em></p>
+        <a href="{{ bebida.link }}" class="btn">Saiba Mais</a>
       </div>
     </div>
-
-    <div class="card">
-      <img src="imgs/Doce_Ninho.jpg" alt="Valiosa">
-      <div class="card-content">
-        <h4>23. NINHO <span></span></h4>
-        <p>Ingredientes: Creme de leite, Glucose de milho, Leite condensado e Leite em pó.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Beijinho.jpg" alt="Valiosa">
-      <div class="card-content">
-        <h4>24. BEIJINHO <span></span></h4>
-        <p>Ingredientes: Creme de leite, Glucose de milho, Leite condensado e Côco ralado.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Surpresa_de_Uva.jpg" alt="Valiosa">
-      <div class="card-content">
-        <h4>24. SURPRESA DE UVA <span></span></h4>
-        <p>Ingredientes: Creme de leite, Leite condensado, Leite em pó e Uva.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Picho_de_Pé.jpg" alt="Valiosa">
-      <div class="card-content">
-        <h4>25. BICHO DE PÉ <span></span></h4>
-        <p>Ingredientes: Leite condensado, Açúcar, Gelatina de morango e Manteiga.</p>
-      </div>
-    </div>
+    {% endfor %}
 
     <h3 class="category-title" id="recheios">Recheios</h3>
+        {% for bebida in bebidas %}
     <div class="card">
-      <img src="imgs/Recheio_MousseMaracujá.jpg" alt="Preciosa">
+      <img src="{{ url_for('static', filename='imgs/' + bebida.img) }}" alt="{{ bebida.nome }}">
       <div class="card-content">
-        <h4>26. MOUSSE DE MARACUJÁ <span></span></h4>
-        <p>Ingredientes: Chantilly, Polpa de maracujá, Suco em pó de maracujá e Leite condensado</p>
+        <h4>{{ bebida.id }}. {{ bebida.nome }}</h4>
+        {% for preco in bebida.precos %}
+        <h4>ㅤㅤㅤ <span>{{ preco }}</span></h4>
+        {% endfor %}
+        <p><em>{{ bebida.descricao }}</em></p>
+        <a href="{{ novidade.link }}" class="btn">Saiba Mais</a>
       </div>
     </div>
-
-    <div class="card">
-      <img src="imgs/Recheio_Sensação.jpg" alt="Valiosa">
-      <div class="card-content">
-        <h4>27. SENSAÇÃO <span></span></h4>
-        <p>Ingredientes: Chantilly, Suco em pó de morango, Leite condensado e Barra de chocolate em pedaços.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Recheio_Brigadeiro.jpg" alt="Valiosa">
-      <div class="card-content">
-        <h4>28. BRIGADEIRO <span></span></h4>
-        <p>Ingredientes: Leite condensado, Creme de leite e Chocolate em pó.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Recheio_MousseNinho.jpg" alt="Valiosa">
-      <div class="card-content">
-        <h4>29. MOUSSE DE NINHO <span></span></h4>
-        <p>Ingredientes: Chantilly e Brigadeiro de ninho.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Recheio_MousseDoceDeLeite.jpg" alt="Valiosa">
-      <div class="card-content">
-        <h4>30. MOUSSE DE DOCE DE LEITE <span></span></h4>
-        <p>Ingredientes: Chantilly e Doce de leite caseiro.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Recheio_Ninho.jpg" alt="Valiosa">
-      <div class="card-content">
-        <h4>31. NINHO <span></span></h4>
-        <p>Ingredientes: Leite condensado, Creme de leite e Leite em pó.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Recheio_MousseDeChocolate.jpg" alt="Valiosa">
-      <div class="card-content">
-        <h4>32. MOUSSE DE CHOCOLATE <span></span></h4>
-        <p>Ingredientes: Doce de leite, Chantilly e Chocolate em pó.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Recheio_MousseMorango.jpg" alt="Valiosa">
-      <div class="card-content">
-        <h4>33. MOUSSE DE MORANGO <span></span></h4>
-        <p>Ingredientes: Chantilly, Suco em pó de morango e Bandeija de morango.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Recheio_Prestígio.jpg" alt="Valiosa">
-      <div class="card-content">
-        <h4>34. PRESTÍGIO <span></span></h4>
-        <p>Ingredientes: Leite condensado, Creme de leite e Côco ralado.</p>
-      </div>
-    </div>
-
-    <h3 class="category-title" id="bolo_de_pote">Bolos de Pote</h3>
-    <div class="card">
-      <img src="imgs/Pote_PãoDeLó.jpg" alt="Preciosa">
-      <div class="card-content">
-        <h4>35. PÃO DE LÓ (MASSA BRANCA) <span>R$ 20,00</span></h4>
-        <p>Ingredientes: Farinha, Açúcar, Água quente, Ovos, Baunilha e Fermento.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Pote_MassaChocolate.jpg" alt="Preciosa">
-      <div class="card-content">
-        <h4>36.  MASSA DE CHOCOLATE <span>R$ 20,00</span></h4>
-        <p>Ingredientes: Farinha, Açúcar, Água, Ovos, Fermento, Leite, Óleo e Chocolate em pó.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Pote_RedVelvet.jpg" alt="Preciosa">
-      <div class="card-content">
-        <h4>37.  BOLO RED VELVET<span>R$ 20,00</span></h4>
-        <p>Ingredientes: Farinha, Açúcar, Leite, Ovos, Vinagre branco, Baunilha, Chocolate em pó, Corante vermelho e Óleo.</p>
-      </div>
-    </div>
+    {% endfor %}
 
     <h3 class="category-title" id="novidades">Novidades</h3>
+    {% for novidade in novidades %}
     <div class="card">
-      <img src="imgs/Novidades_MaçaSemGlúten.jpg" alt="Preciosa">
+      <img src="{{ url_for('static', filename='imgs/' + bebida.img) }}" alt="{{ bebida.nome }}">
       <div class="card-content">
-        <h4>38. BOLO DE MAÇA SEM GLÚTEN <span>R$ 20,00</span></h4>
-        <p>Ingredientes: Maçã, Ovos, Tâmaras, Óleo de côco, Leite Vegetal(côco), Farinha de amêndoas, Canela, Fermento, Sal e Nozes picadas.</p>
+        <h4>{{ novidade.id }}. {{ novidade.nome }}</h4>
+        {% for preco in novidade.precos %}
+        <h4>ㅤㅤㅤ <span>{{ preco }}</span></h4>
+        {% endfor %}
+        <p><em>{{ novidade.descricao }}</em></p>
+        <a href="{{ novidade.link }}" class="btn">Saiba Mais</a>
       </div>
     </div>
-
-    <div class="card">
-      <img src="imgs/Novidades_BananaIntegral.jpg" alt="Preciosa">
-      <div class="card-content">
-        <h4>39. BOLO DE BANANA INTEGRAL <span>R$ 20,00</span></h4>
-        <p>Ingredientes: Banana nanica, Ovos, Óleo de côco, Farinha de aveia - sem glúten, Farinha de amêndoas, Mel, Canela, Fermento e Nozes picadas .</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Novidades_CenouraFit.jpg" alt="Preciosa">
-      <div class="card-content">
-        <h4>40.  BOLO DE CENOURA FITNESS<span>R$ 20,00</span></h4>
-        <p>Ingredientes: Cenoura, Ovos, Leite vegetal(côco), Mel, Farinha de aveia sem glúten, Farinha de amêndoas, Fermento, Sal e Canela. - COBERTURA: Cacau em pó 100%, Leite vegetal(côco), Mel e Pasta de amendoim.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Novidades_ChocolateFit.jpg" alt="Preciosa">
-      <div class="card-content">
-        <h4>41.  BOLO DE CHOCOLATE FITNESS<span>R$ 20,00</span></h4>
-        <p>Ingredientes: Ovos, Cacau em pó 100%, Farinha de aveia, Farinha de amêndoas, Mel, Leite vegetal(côco), Óleo de côco, Essência de baunilha, Fermento e Sal.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Novidades_NozesFit.jpg" alt="Preciosa">
-      <div class="card-content">
-        <h4>42.  BOLO DE NOZES FITNESS<span>R$ 20,00</span></h4>
-        <p>Ingredientes: Ovos, Mel, Óleo de côco, Leite vegetal(côco), Farinha de amêndoas, Fermento, Nozes picadas, Sal, Canela e Essência de baunilha.</p>
-      </div>
-    </div>
+    {% endfor %}
 
      <h3 class="category-title" id="bebidas">Bebidas</h3>
+        {% for bebida in bebidas %}
     <div class="card">
-      <img src="imgs/Bebidas_Laranja.jpg" alt="Suco Laranja">
+      <img src="{{ url_for('static', filename='imgs/' + bebida.img) }}" alt="{{ bebida.nome }}">
       <div class="card-content">
-        <h4>43. SUCO DE LARANJA <span>300ml - R$ 12,00</span></h4>
-        <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>400ml - R$ 13,00</span></h4>
-        <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>400ml - R$ 15,00</span></h4>
-        <p><em>Refresque seu dia com a energia da fruta!</em></p>
-        <a href="Suco_Laranja.html" class="btn">Saiba Mais</a>
+        <h4>{{ bebida.id }}. {{ bebida.nome }}</h4>
+        {% for preco in bebida.precos %}
+        <h4>ㅤㅤㅤ <span>{{ preco }}</span></h4>
+        {% endfor %}
+        <p><em>{{ bebida.descricao }}</em></p>
+        <a href="{{ bebida.link }}" class="btn">Saiba Mais</a>
       </div>
     </div>
-
-    <div class="card">
-      <img src="imgs/Bebidas_Goiaba.jpg" alt="Suco Goiaba">
-      <div class="card-content">
-        <h4>44. SUCO DE GOIABA <span>300ml - R$ 10,00</span></h4>
-        <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>400ml - R$ 10,00</span></h4>
-        <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>400ml - R$ 12,00</span></h4>
-        <p><em>Sabor direto da natureza, geladinho como você merece.</em></p>
-        <a href="Suco_Goiaba.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bebidas_Maracuja.jpg" alt="Suco Maracujá">
-      <div class="card-content">
-        <h4>45. SUCO DE MARACUJÁ <span>300ml - R$ 11,00</span></h4>
-        <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>400ml - R$ 12,50</span></h4>
-        <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>400ml - R$ 16,50</span></h4>
-        <p><em>Feitos na hora, cheios de vitaminas e frescor.</em></p>
-        <a href="Suco_Maracuja.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bebidas_Abacaxi.jpg" alt="Suco Abacaxi">
-      <div class="card-content">
-        <h4>46. SUCO DE ABACAXI  <span>300ml - R$ 10,50</span></h4>
-        <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>400ml - R$ 11,00</span></h4>
-        <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>400ml - R$ 14,00</span></h4>
-        <p><em>Hidrate-se com leveza e frescor.</em></p>
-        <a href="Suco_Abacaxi.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bebidas_CaféPuro.jpg" alt="Café Puro">
-      <div class="card-content">
-        <h4>46. CAFÉ PURO  <span>100ml - R$ 3,50</span></h4>
-        <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>150ml - R$ 4,00</span></h4>
-        <p><em>A dose perfeita de energia para começar bem.</em></p>
-        <a href="Cafe_puro.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="imgs/Bebidas_CaféComLeite.jpg" alt="Café com Leite">
-      <div class="card-content">
-        <h4>46. CAFÉ COM LEITE  <span>100ml - R$ 4,00</span></h4>
-        <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>150ml - R$ 4,50</span></h4>
-        <p><em>Um abraço quentinho em forma de xícara.</em></p>
-        <a href="Cafe_com_Leite.html" class="btn">Saiba Mais</a>
-      </div>
-    </div>
+    {% endfor %}
 
   </div>
 
