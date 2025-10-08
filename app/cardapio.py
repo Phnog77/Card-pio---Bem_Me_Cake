@@ -7,9 +7,9 @@ from pymongo import MongoClient
 app = Flask(__name__)
 CORS(app)
 
-client = MongoClient("mongodb://localhost:27017/")
-db = client["bemmecake"]
-produtos = db["produtos"]
+client = MongoClient("mongodb://admin:admin@localhost:27017/")
+db = client["BemMeCake"]
+produtos = db["items"]
 
 @app.route("/cardapio/")
 def carregar():
@@ -22,7 +22,7 @@ def carregar():
     bebidas = list(produtos.find({"type": "bebida"}))
 
     return render_template(
-        "index.html",
+        "index",
         bolos_caseiros=bolos_caseiros,
         doces=doces,
         bolos_de_festa=bolos_de_festa,
