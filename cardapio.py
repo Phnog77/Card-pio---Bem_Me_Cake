@@ -17,7 +17,6 @@ import socket
 import random
 import bcrypt
 import shutil
-import sqlite3
 import requests
 import threading, pytz
 from random import randint
@@ -31,14 +30,6 @@ from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
 # |
 app = Flask(__name__)
 CORS(app)
-# |
-# SQLite3  
-# | (Open Connection)
-def getdb():
-    conn = sqlite3.connect('salao.db')
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-    return conn, cursor
 # |
 @app.route("/aps/carregar")
 def carregar():
