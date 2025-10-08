@@ -7,7 +7,7 @@ from pymongo import MongoClient
 app = Flask(__name__)
 CORS(app)
 
-client = MongoClient("mongodb://admin:admin@localhost:27017/")
+client = MongoClient("mongodb://" + "admin" + open("senha.txt").read() + ":admin@localhost:27017/")
 db = client["BemMeCake"]
 produtos = db["items"]
 
