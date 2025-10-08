@@ -44,7 +44,7 @@ func main() {
 
 	r.Static("/static", "../static")
 
-	r.LoadHTMLGlob("../templates/*")
+	r.LoadHTMLGlob("templates/*")
 
 	r.GET("/", func(c *gin.Context) {
 
