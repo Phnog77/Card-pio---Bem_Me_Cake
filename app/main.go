@@ -43,6 +43,9 @@ func main() {
 	collection := db.Collection("items")
 
 	r.Static("/static", "../static")
+
+	r.LoadHTMLGlob("templates/*")
+
 	r.GET("/", func(c *gin.Context) {
 
 		cur, err := collection.Find(ctx, bson.M{"type": "bolo", "class": "caseira"})
@@ -60,7 +63,7 @@ func main() {
 			total = append(total, v)
 		}
 
-		c.HTML(http.StatusOK, "../templates/ginTemplateFormat.html", gin.H{"bolosCaseiros": total})
+		c.HTML(http.StatusOK, "ginTemplateFormat.html", gin.H{"bolosCaseiros": total})
 	})
 
 	if err := r.RunTLS(":443", "/etc/letsencrypt/live/servidordomal.fun/fullchain.pem", "/etc/letsencrypt/live/servidordomal.fun/privkey.pem"); err != nil {
