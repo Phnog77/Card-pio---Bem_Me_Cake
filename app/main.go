@@ -90,6 +90,8 @@ func main() {
 			c.Status(500)
 		}
 
+		v.ImageLink = fmt.Sprintf("https://servidordomal.fun/static/imgs/%s.jpg", id)
+
 		c.HTML(200, "ginDetailsTemplate.html", gin.H{"Item": v})
 	})
 
