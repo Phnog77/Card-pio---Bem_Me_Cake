@@ -8,8 +8,8 @@ app = Flask(__name__)
 CORS(app)
 
 client = MongoClient("mongodb://localhost:27017/")
-db = client["BemMeCake"]
-produtos = db["items"]
+db = client["bemmecake"]
+produtos = db["produtos"]
 
 @app.route("/cardapio/")
 def carregar():
