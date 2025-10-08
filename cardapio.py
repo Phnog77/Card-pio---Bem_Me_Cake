@@ -31,7 +31,7 @@ from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
 app = Flask(__name__)
 CORS(app)
 # |
-@app.route("/aps/carregar")
+@app.route("/cardapio/")
 def carregar():
     
 # |
