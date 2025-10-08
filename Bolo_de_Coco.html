@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>COCO - Detalhes</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#fff5f7; color:#333; background-image: url('imgs/WhatsApp Image 2025-10-01 at 23.03.11.jpeg'); background-size:cover; background-position:center; }
+    header { background: #ff4da6; color: white; padding: 15px 20px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 6px rgba(0,0,0,0.2); position: sticky; top:0; z-index:100; }
+    header h1 { margin:0; font-size:20px; }
+    .container { max-width:900px; margin:40px auto; padding:20px; }
+    .card { background:white; border-radius:15px; box-shadow:0 6px 12px rgba(0,0,0,0.15); padding:20px; display:flex; gap:20px; flex-wrap:wrap; }
+    .card img { flex:1 1 300px; max-width:350px; border-radius:12px; object-fit:cover; }
+    .card-content { flex:2 1 400px; }
+    .card-content h2 { color:#ff4da6; margin-top:0; font-size:26px; }
+    .precos { background:#fff0f6; border-left:5px solid #ff4da6; padding:10px; margin:15px 0; border-radius:8px; }
+    .precos p { margin:5px 0; font-weight:bold; }
+    .ingredientes { margin:15px 0; }
+    .ingredientes span { display:inline-block; background:#ffe6f0; padding:6px 12px; margin:4px; border-radius:20px; font-size:14px; }
+    .descricao { margin-top:20px; font-size:15px; line-height:1.6; }
+    .btn { display:inline-block; padding:12px 25px; margin-top:20px; font-size:16px; font-weight:bold; text-decoration:none; color:#fff; background-color:#ff4da6; border-radius:8px; transition:background-color 0.3s; }
+    .btn:hover { background-color:#e60073; }
+    @media (max-width:768px) { .card { flex-direction:column; align-items:center; } .card img { width:100%; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display:flex; align-items:center; gap:8px;"><h1>Bem Me Cake</h1><img src="imgs/Logo_BemMeCake.png" alt="Logo" style="height:30px;"></div>
+    <a href="index.html" class="btn">⬅ Voltar</a>
+  </header>
+  <div class="container">
+    <div class="card">
+      <img src="imgs/Bolo_Coco.jpg" alt="COCO">
+      <div class="card-content">
+        <h2>COCO</h2>
+        <div class="precos">
+          <p>📍 Pequeno (P): R$ 32,00</p>
+          <p>📍 Grande (G): R$ 48,00</p>
+        </div>
+        <div class="ingredientes">
+          <strong>Ingredientes:</strong><br>
+          <span>Açúcar</span> <span>Coco ralado</span> <span>Essência de coco</span> <span>Farinha</span> <span>Fermento</span> <span>Leite</span> <span>Óleo e Ovos - Calda: Água e Leite condensado</span>
+        </div>
+        <div class="descricao">
+          Exótico e úmido: coco ralado e calda doce deixam cada fatia com um brilho irresistível.
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

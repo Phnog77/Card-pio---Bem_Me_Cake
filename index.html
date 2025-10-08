@@ -88,17 +88,20 @@
     }
     .card-content {
       flex: 1;
+      display: flex;
+      gap: 16px;
+      flex-direction: column;
     }
     .card-content h4 {
       margin: 0;
       color: #ff4da6;
       font-size: 18px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
     }
     .card-content p {
-      margin: 5px 0;
+      margin: 2px 0;
       font-size: 14px;
     }
     .category-nav {
@@ -119,12 +122,84 @@
       background: #e60073;
     }
     footer {
-      text-align: center;
-      padding: 20px;
-      background: #ff4da6;
-      color: white;
-      margin-top: 40px;
-    }
+  background: #ff4da6;
+  color: white;
+  padding: 30px 20px;
+  margin-top: 40px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between; /* Deixa lado a lado */
+  align-items: flex-start;
+  flex-wrap: wrap; /* Empilha no celular */
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.footer-container h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  border-bottom: 2px solid white;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.footer-contato a,
+.footer-redes a,
+.footer-endereco a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.footer-redes a i {
+  font-size: 20px;
+  margin-right: 10px;
+  transition: color 0.3s ease;
+}
+
+.footer-contato i,
+.footer-redes i,
+.footer-endereco i {
+  margin-right: 10px;
+}
+
+.footer-redes a:hover i {
+  color: #ffe6f0;
+}
+
+.footer-copy {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  padding-top: 10px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 25px;
+  }
+}
+
+.footer-container div {
+    width: 100%;            /* Cada bloco ocupa toda a largura */
+    max-width: 300px;       /* Limita a largura para não ficar esticado demais */
+  }
+
+  .footer-contato a,
+  .footer-redes a,
+  .footer-endereco a {
+    display: inline-block;
+    word-wrap: break-word;  /* Quebra links longos */
+  }
+  
     /* Responsividade */
     @media (max-width: 768px) {
       nav ul {
@@ -167,6 +242,21 @@
     body {
       background-image: url(imgs/WhatsApp\ Image\ 2025-10-01\ at\ 23.03.11.jpeg);
     }
+    .btn {
+      display: inline-block;
+      max-width: fit-content;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #fff;
+      background-color: #ff4da6; /* azul padrão */
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #ff4da6; /* azul mais escuro no hover */
+    }
   </style>
 </head>
 <body>
@@ -196,156 +286,175 @@
       <a href="#bebidas">Bebidas</a>
     </div>
 
-        <h3 class="category-title" id="caseiros">Bolos Caseiros</h3>
+      <h3 class="category-title" id="caseiros">Bolos Caseiros</h3>
     <div class="card">
       <img src="imgs/Bolo_Cenoura.jpg" alt="Cacau">
       <div class="card-content">
-        <h4>1. BOLO DE CENOURA <span>R$ 15,00</span></h4>
-        <p>Ingredientes: Açúcar, Cenoura, Farinha, Fermento, Óleo e Ovos</p>
+        <h4>1. BOLO DE CENOURA <span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Detalhes_Caseiro_BoloDeCenoura.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
-      <img src="imgs/WhatsApp Image 2025-10-01 at 20.29.23.jpeg" alt="Diva">
+      <img src="imgs/WhatsApp Image 2025-10-01 at 20.29.23.jpeg" alt="">
       <div class="card-content">
-        <h4>2. BOLO DE LARANJA <span>R$ 17,00</span></h4>
-        <p>Ingredientes: Açúcar, Casca de Laranja, Farinha, Fermento, Óleo, Ovos e Suco de Laranja.</p>
+        <h4>2. BOLO DE LARANJA <span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_Laranja.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/Bolo_Limão2.jpg" alt="Dori">
       <div class="card-content">
-        <h4>3. BOLO DE LIMÃO <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Açúcar, Farinha, Fermento, Gelatina de Limão, Leite, Óleo e Ovos.</p>
+        <h4>3. BOLO DE LIMÃO <span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_Limão.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/Bolo_Milho.jpeg" alt="Dori">
       <div class="card-content">
-        <h4>4. BOLO DE MILHO <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Açúcar, Farinha, Farmento, Flocos de milho, Iogurte, Lata de milho, Óleo e Ovos.</p>
+        <h4>4. BOLO DE MILHO<span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_Milho.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/bolo-de-mandioca-com-coco.jpeg" alt="Dori">
       <div class="card-content">
-        <h4>5. BOLO DE MANDIOCA <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Açúcar, Côco ralado, Fermento, Leite, Leite de côco, Margarina, Massa de mandioca e Ovos.</p>
+        <h4>5. BOLO DE MANDIOCA <span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_Mandioca.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/WhatsApp Image 2025-10-01 at 20.29.25.jpeg" alt="Dori">
       <div class="card-content">
-        <h4>6. BOLO DE CHOCOLATE <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Açúcar, Água, Chocolate em pó, Farinha, Fermento, Leite, Óleo e Ovos.</p>
+        <h4>6. BOLO DE CHOCOLATE <span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_Chocolate.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/Bolo_Pamonha.jpg" alt="Dori">
       <div class="card-content">
-        <h4>7. BOLO DE PAMONHA <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Côco ralado, Espiga de milho, Fermento, Leite condensado, Leite de côco, Óleo e Ovos.</p>
+        <h4>7. BOLO DE PAMONHA <span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_Pamonha.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/Bolo_BananaAveia.jpg" alt="Dori">
       <div class="card-content">
-        <h4>8. BANANA COM AVEIA <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Açúcar, Aveia fina, Bananas, Canela, Fermento, Óleo e Ovos.</p>
+        <h4>8. BANANA COM AVEIA <span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_BananacomAveia.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/Bolo_BananaCaramelizado.jpg" alt="Dori">
       <div class="card-content">
-        <h4>9. BANANA CARAMELIZADA <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Açúcar, Canela, Farinha, Fermento, Leite, Óleo e Ovos - Calda: Açúcar e Água.</p>
+        <h4>9. BANANA CARAMELIZADA<span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_BananaCaramelizada.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/Bolo_Ninho.jpg" alt="Dori">
       <div class="card-content">
-        <h4>10. NINHO <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Açúcar, Farinha, Fermento, Leite, Leite em pó, Margarina e Ovos.</p>
+        <h4>10. NINHO <span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_Ninho.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/Bolo_Coco.jpg" alt="Dori">
       <div class="card-content">
-        <h4>11. COCO <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Açúcar, Côco ralado, Essência de côco, Farinha, Fermento, Leite, Óleo e Ovos - Calda: Água e Leite condensado.</p>
+        <h4>11. COCO <span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_Coco.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/Bolo_Fubá.jpg" alt="Dori">
       <div class="card-content">
-        <h4>12. BOLO DE FUBÁ <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Açúcar, Farinha, Fermento, Fúba, Goiabada, Leite, Óleo e Ovos.</p>
+        <h4>12. BOLO DE FUBÁ<span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_Fuba.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/Bolo_Churros.jpg" alt="Dori">
       <div class="card-content">
-        <h4>13. CHURROS <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Açúcar, Canela, Farinha, Fermento, Leite, Óleo e Ovos.</p>
+        <h4>13. CHURROS <span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_Churros.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/Bolo_CenouraVegano.jpg" alt="Dori">
       <div class="card-content">
-        <h4>14. CENOURA VEGANO <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Açúcar demerara, Cenoura, Farinha de trigo, Fermento, Leite vegetal e Óleo de côco.</p>
+        <h4>14. CENOURA VEGANO <span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_CenouraVegano.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/Bolo_ChocoGlútenLactose.jpg" alt="Dori">
       <div class="card-content">
-        <h4>15. CHOCOLATE SEM GLUTEM E SEM LACTOSE <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Açúcar demerara, Água quente, Cacau em pó, Farinha de arroz, Fermento, Óleo, Ovos, Polvilho doce e Sal.</p>
+        <h4>15. CHOCOLATE SEM GLUTEM E SEM LACTOSE <span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_ChocolateSemGluteneSemLactose.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/Bolo_CenGlútenLactose.jpg" alt="Dori">
       <div class="card-content">
-        <h4>16. CENOURA SEM LACTOSE E SEM GULTEM <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Açúcar, Cenoura, Farinha de arroz, Fermento, Óleo, Ovos e Sal.</p>
+        <h4>16. CENOURA SEM LACTOSE E SEM GULTEM <span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_CenouraSemLactose_e_Gluten.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/WhatsApp Image 2025-10-01 at 17.04.37.jpeg" alt="Dori">
       <div class="card-content">
-        <h4>17. BOLO RED VELVET <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Açúcar, Baunilha, Chocolate em pó, Corante vermelho, Farinha, Leite, Óleo, Ovos e Vinagre branco.</p>
+        <h4>17. BOLO RED VELVET <span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_RedVelvet.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/Bolo_Formigueiro.jpg" alt="Dori">
       <div class="card-content">
-        <h4>18. FORMIGUEIRO <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Açúcar, Baunilha, Farinha, Fermento, Granulado, Leite, Óleo e Ovos.</p>
+        <h4>18. FORMIGUEIRO <span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_Formigueiro.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
     <div class="card">
       <img src="imgs/Bolo_ChocolateVegano.jpg" alt="Dori">
       <div class="card-content">
-        <h4>19. CHOCOLATE VEGANO <span>R$ 16,00</span></h4>
-        <p>Ingredientes: Açúcar demerara, Bicarbonato de sódio, Cacau em pó, Essência de baunilha, Farinha de trigo, Fermento, Leite vegetal, Óleo de côco e Vinagre de maçãs.</p>
+        <h4>19. CHOCOLATE VEGANO <span></span></h4>
+        <p>Escolha entre os tamanhos P(pequeno) e G(grande). + Opcional de cobertura.</p>
+        <a href="Bolo_de_ChocolateVegano.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
@@ -353,7 +462,7 @@
     <div class="card">
       <img src="imgs/Bolo_PãoDeLó.jpg" alt="Dominó">
       <div class="card-content">
-        <h4>20. PÃO DE LÓ (MASSA BRANCA) <span>R$ 18,00</span></h4>
+        <h4>20. PÃO DE LÓ (MASSA BRANCA) <span></span></h4>
         <p>Ingredientes: Açúcar, Água quente, Baunilha, Farinha, Fermento e Ovos.</p>
       </div>
     </div>
@@ -361,7 +470,7 @@
     <div class="card">
       <img src="imgs/Bolo_MassaChocolate.jpg" alt="Holandesa">
       <div class="card-content">
-        <h4>21. MASSA DE CHOCOLATE <span>R$ 17,50</span></h4>
+        <h4>21. MASSA DE CHOCOLATE <span></span></h4>
         <p>Ingredientes: Açúcar, Água, Chocolate em pó, Farinha, Fermento, Leite, Óleo e Ovos.</p>
       </div>
     </div>
@@ -370,7 +479,7 @@
     <div class="card">
       <img src="imgs/Brigadeiro.jpg" alt="Preciosa">
       <div class="card-content">
-        <h4>22. BRIGADEIRO <span>R$ 20,00</span></h4>
+        <h4>22. BRIGADEIRO <span></span></h4>
         <p>Ingredientes: Chocolate em pó, Creme de leite, Glucose de milho, Granulado e Leite condensado.</p>
       </div>
     </div>
@@ -378,7 +487,7 @@
     <div class="card">
       <img src="imgs/Doce_Ninho.jpg" alt="Valiosa">
       <div class="card-content">
-        <h4>23. NINHO <span>R$ 19,00</span></h4>
+        <h4>23. NINHO <span></span></h4>
         <p>Ingredientes: Creme de leite, Glucose de milho, Leite condensado e Leite em pó.</p>
       </div>
     </div>
@@ -386,7 +495,7 @@
     <div class="card">
       <img src="imgs/Beijinho.jpg" alt="Valiosa">
       <div class="card-content">
-        <h4>24. BEIJINHO <span>R$ 19,00</span></h4>
+        <h4>24. BEIJINHO <span></span></h4>
         <p>Ingredientes: Creme de leite, Glucose de milho, Leite condensado e Côco ralado.</p>
       </div>
     </div>
@@ -394,7 +503,7 @@
     <div class="card">
       <img src="imgs/Surpresa_de_Uva.jpg" alt="Valiosa">
       <div class="card-content">
-        <h4>24. SURPRESA DE UVA <span>R$ 19,00</span></h4>
+        <h4>24. SURPRESA DE UVA <span></span></h4>
         <p>Ingredientes: Creme de leite, Leite condensado, Leite em pó e Uva.</p>
       </div>
     </div>
@@ -402,7 +511,7 @@
     <div class="card">
       <img src="imgs/Picho_de_Pé.jpg" alt="Valiosa">
       <div class="card-content">
-        <h4>25. BICHO DE PÉ <span>R$ 19,00</span></h4>
+        <h4>25. BICHO DE PÉ <span></span></h4>
         <p>Ingredientes: Leite condensado, Açúcar, Gelatina de morango e Manteiga.</p>
       </div>
     </div>
@@ -411,7 +520,7 @@
     <div class="card">
       <img src="imgs/Recheio_MousseMaracujá.jpg" alt="Preciosa">
       <div class="card-content">
-        <h4>26. MOUSSE DE MARACUJÁ <span>R$ 20,00</span></h4>
+        <h4>26. MOUSSE DE MARACUJÁ <span></span></h4>
         <p>Ingredientes: Chantilly, Polpa de maracujá, Suco em pó de maracujá e Leite condensado</p>
       </div>
     </div>
@@ -419,7 +528,7 @@
     <div class="card">
       <img src="imgs/Recheio_Sensação.jpg" alt="Valiosa">
       <div class="card-content">
-        <h4>27. SENSAÇÃO <span>R$ 19,00</span></h4>
+        <h4>27. SENSAÇÃO <span></span></h4>
         <p>Ingredientes: Chantilly, Suco em pó de morango, Leite condensado e Barra de chocolate em pedaços.</p>
       </div>
     </div>
@@ -427,7 +536,7 @@
     <div class="card">
       <img src="imgs/Recheio_Brigadeiro.jpg" alt="Valiosa">
       <div class="card-content">
-        <h4>28. BRIGADEIRO <span>R$ 19,00</span></h4>
+        <h4>28. BRIGADEIRO <span></span></h4>
         <p>Ingredientes: Leite condensado, Creme de leite e Chocolate em pó.</p>
       </div>
     </div>
@@ -435,7 +544,7 @@
     <div class="card">
       <img src="imgs/Recheio_MousseNinho.jpg" alt="Valiosa">
       <div class="card-content">
-        <h4>29. MOUSSE DE NINHO <span>R$ 19,00</span></h4>
+        <h4>29. MOUSSE DE NINHO <span></span></h4>
         <p>Ingredientes: Chantilly e Brigadeiro de ninho.</p>
       </div>
     </div>
@@ -443,7 +552,7 @@
     <div class="card">
       <img src="imgs/Recheio_MousseDoceDeLeite.jpg" alt="Valiosa">
       <div class="card-content">
-        <h4>30. MOUSSE DE DOCE DE LEITE <span>R$ 19,00</span></h4>
+        <h4>30. MOUSSE DE DOCE DE LEITE <span></span></h4>
         <p>Ingredientes: Chantilly e Doce de leite caseiro.</p>
       </div>
     </div>
@@ -451,7 +560,7 @@
     <div class="card">
       <img src="imgs/Recheio_Ninho.jpg" alt="Valiosa">
       <div class="card-content">
-        <h4>31. NINHO <span>R$ 19,00</span></h4>
+        <h4>31. NINHO <span></span></h4>
         <p>Ingredientes: Leite condensado, Creme de leite e Leite em pó.</p>
       </div>
     </div>
@@ -459,7 +568,7 @@
     <div class="card">
       <img src="imgs/Recheio_MousseDeChocolate.jpg" alt="Valiosa">
       <div class="card-content">
-        <h4>32. MOUSSE DE CHOCOLATE <span>R$ 19,00</span></h4>
+        <h4>32. MOUSSE DE CHOCOLATE <span></span></h4>
         <p>Ingredientes: Doce de leite, Chantilly e Chocolate em pó.</p>
       </div>
     </div>
@@ -467,7 +576,7 @@
     <div class="card">
       <img src="imgs/Recheio_MousseMorango.jpg" alt="Valiosa">
       <div class="card-content">
-        <h4>33. MOUSSE DE MORANGO <span>R$ 19,00</span></h4>
+        <h4>33. MOUSSE DE MORANGO <span></span></h4>
         <p>Ingredientes: Chantilly, Suco em pó de morango e Bandeija de morango.</p>
       </div>
     </div>
@@ -475,7 +584,7 @@
     <div class="card">
       <img src="imgs/Recheio_Prestígio.jpg" alt="Valiosa">
       <div class="card-content">
-        <h4>34. PRESTÍGIO <span>R$ 19,00</span></h4>
+        <h4>34. PRESTÍGIO <span></span></h4>
         <p>Ingredientes: Leite condensado, Creme de leite e Côco ralado.</p>
       </div>
     </div>
@@ -554,6 +663,7 @@
         <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>400ml - R$ 13,00</span></h4>
         <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>400ml - R$ 15,00</span></h4>
         <p><em>Refresque seu dia com a energia da fruta!</em></p>
+        <a href="Suco_Laranja.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
@@ -564,6 +674,7 @@
         <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>400ml - R$ 10,00</span></h4>
         <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>400ml - R$ 12,00</span></h4>
         <p><em>Sabor direto da natureza, geladinho como você merece.</em></p>
+        <a href="Suco_Goiaba.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
@@ -574,6 +685,7 @@
         <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>400ml - R$ 12,50</span></h4>
         <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>400ml - R$ 16,50</span></h4>
         <p><em>Feitos na hora, cheios de vitaminas e frescor.</em></p>
+        <a href="Suco_Maracuja.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
@@ -584,6 +696,7 @@
         <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>400ml - R$ 11,00</span></h4>
         <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>400ml - R$ 14,00</span></h4>
         <p><em>Hidrate-se com leveza e frescor.</em></p>
+        <a href="Suco_Abacaxi.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
@@ -593,6 +706,7 @@
         <h4>46. CAFÉ PURO  <span>100ml - R$ 3,50</span></h4>
         <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>150ml - R$ 4,00</span></h4>
         <p><em>A dose perfeita de energia para começar bem.</em></p>
+        <a href="Cafe_puro.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
@@ -602,39 +716,43 @@
         <h4>46. CAFÉ COM LEITE  <span>100ml - R$ 4,00</span></h4>
         <h4>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ <span>150ml - R$ 4,50</span></h4>
         <p><em>Um abraço quentinho em forma de xícara.</em></p>
+        <a href="Cafe_com_Leite.html" class="btn">Saiba Mais</a>
       </div>
     </div>
 
   </div>
 
   <footer id="sobre">
-    <div class="footer-container">
-      <!-- Contato -->
-      <div class="footer-contato">
-        <h3>Contato</h3>
-        <p><i class="fas fa-envelope"></i> 
-          <a href="mailto:seuemail@exemplo.com"> seuemail@exemplo.com</a>
-        </p>
-        <p><i class="fas fa-phone"></i> 
-          <a href="tel:+5511999999999"> (11) 99999-9999</a>
-        </p>
-      </div>
-
-      <!-- Redes sociais -->
-      <div class="footer-redes">
-        <h3>Siga-nos</h3>
-        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-      </div>
+  <div class="footer-container">
+    <div class="footer-contato">
+      <h3>Contato</h3>
+      <p><i class="fas fa-envelope"></i> 
+        <a href="bemmecaketcc@gmail.com">bemmecaketcc@gmail.com</a>
+      </p>
+      <p><i class="fas fa-phone"></i> 
+        <a href="tel:+5511918768295"> (11) 91876-8295</a>
+      </p>
     </div>
 
-    <!-- Copyright -->
-    <div class="footer-copy">
-      <p>&copy; 2025 - Seu Site. Todos os direitos reservados.</p>
+    <div class="footer-redes">
+      <h3>Siga-nos</h3>
+      <p><i class="fas fa-envelope"></i> 
+        <a href="https://www.instagram.com/bem.mecake_?igsh=MjEybzd1eGJlMmNn"> https://www.instagram.com/bem.mecake</a>
+      </p>
     </div>
-  </footer>
+
+    <div class="footer-endereco">
+      <h3>Endereço</h3>
+      <p><i class="fas fa-envelope"></i> 
+        <a style="color: white;" href="Star Hospedaria - R. França Pinto, 873 - Vila Mariana, São Paulo - SP, 04016-033">R. França Pinto, 873 - Vila Mariana, São Paulo - SP, 04016-033</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-copy">
+    <p>&copy; 2025 - Bem Me Cake. Todos os direitos reservados.</p>
+  </div>
+</footer>
 
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
@@ -646,4 +764,3 @@
   </script>
 </body>
 </html>
-
