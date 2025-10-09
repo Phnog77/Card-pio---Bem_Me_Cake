@@ -335,7 +335,7 @@ func main() {
 		c.Redirect(303, "/admin")
 	})
 
-	r.POST("/admin", func(c *gin.Context) {
+	r.GET("/admin", func(c *gin.Context) {
 
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 		defer cancel()
