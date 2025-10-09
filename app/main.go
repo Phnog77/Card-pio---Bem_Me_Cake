@@ -62,7 +62,7 @@ func main() {
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 		defer cancel()
 
-		cur, err := collection.Find(ctx, bson.M{"type": "boloCaseiro"})
+		cur, err := collection.Find(ctx, bson.M{})
 		if err != nil {
 
 			log.Println(err)
@@ -86,7 +86,42 @@ func main() {
 			total = append(total, v)
 		}
 
-		c.HTML(http.StatusOK, "ginTemplateFormat.html", gin.H{"bolosCaseiros": total})
+		boloCaseiro := []Item{}
+		boloFesta := []Item{}
+		boloPote := []Item{}
+		doce := []Item{}
+		bebida := []Item{}
+		recheio := []Item{}
+		novidade := []Item{}
+
+		for _, v := range total {
+			switch v.Type {
+			case "boloCaseiro":
+				boloCaseiro = append(boloCaseiro, v)
+			case "boloFesta":
+				boloFesta = append(boloFesta, v)
+			case "boloPote":
+				boloPote = append(boloPote, v)
+			case "doce":
+				doce = append(doce, v)
+			case "bebida":
+				bebida = append(bebida, v)
+			case "recheio":
+				recheio = append(recheio, v)
+			case "novidade":
+				novidade = append(novidade, v)
+			}
+		}
+
+		c.HTML(http.StatusOK, "ginTemplateFormat.html", gin.H{
+			"boloCaseiro": boloCaseiro,
+			"boloFesta":   boloFesta,
+			"boloPote":    boloPote,
+			"doce":        doce,
+			"bebida":      bebida,
+			"recheio":     recheio,
+			"novidade":    novidade,
+		})
 	})
 
 	r.GET("/produto/:id", func(c *gin.Context) {

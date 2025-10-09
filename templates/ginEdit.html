@@ -85,12 +85,13 @@
                 <div class="form-group">
                     <label for="type">Tipo</label>
                      <select class="form-control" name="type" id="type" required>
-                        <option value="boloCaseiro" {{if eq .Item.Type "boloCaseiro"}}selected{{end}} >Bolo caseiro</option>
+                         <option value="boloCaseiro" {{if eq .Item.Type "boloCaseiro"}}selected{{end}} >Bolo caseiro</option>
                         <option value="boloFesta" {{if eq .Item.Type "boloFesta"}}selected{{end}} >Bolo de festa</option>
                         <option value="boloPote" {{if eq .Item.Type "boloPote"}}selected{{end}} >Bolo de pote</option>
                         <option value="doce" {{if eq .Item.Type "doce"}}selected{{end}} >Doce</option>
                         <option value="bebida" {{if eq .Item.Type "bebida"}}selected{{end}} >Bebida</option>
-                        <option value="recheio" {{if eq .Item.Type "recheio"}}selected{{end}} >Recheios</option>
+                        <option value="recheio" {{if eq .Item.Type "recheio"}}selected{{end}} >Recheio</option>
+                        <option value="novidade" {{if eq .Item.Type "novidade"}}selected{{end}} >Novidade</option>
                     </select>
                 </div>
 
