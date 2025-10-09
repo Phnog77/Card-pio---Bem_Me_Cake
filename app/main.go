@@ -355,6 +355,7 @@ func main() {
 				c.Status(500)
 				return
 			}
+			v.IdHex = v.ID.Hex()
 			items = append(items, v)
 		}
 
