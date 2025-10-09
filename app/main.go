@@ -7,6 +7,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -332,6 +333,7 @@ func main() {
 
 		collection.DeleteOne(ctx, bson.M{"_id": id})
 
+		_ = os.Remove(fmt.Sprintf("./static/%s.jpg", c.PostForm("id")))
 		c.Redirect(303, "/admin")
 	})
 
