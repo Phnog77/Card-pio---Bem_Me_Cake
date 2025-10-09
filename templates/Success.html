@@ -32,7 +32,7 @@
         <h1 class="text-center text-success">Operação bem sucedida!</h1>
         <h1 class="text-center fw-bold ">Adicionar produtos</h1>
         <div class="card p-2">
-            <form action="/admin/add" method="post">
+            <form action="/admin/add" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name">Nome do produto</label>
                     <input class="form-control" id="name" name="name" type="text" required>

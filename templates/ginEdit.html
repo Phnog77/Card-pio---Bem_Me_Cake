@@ -38,7 +38,7 @@
             <small class="text-muted text-center">{{ .Item.ID }}</small>
         </header>        
         <div class="card p-2">
-            <form action="/admin/edit" method="post">
+            <form action="/admin/edit" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="name">Nome do produto</label>
                     <input class="form-control" id="name" name="name" type="text" required value="{{ .Item.Name }}">
