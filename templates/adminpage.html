@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Site</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+</head>
+
+<style>
+    li {
+        list-style: none;
+    }
+</style>
+
+<body>
+    <style>
+        .cardneo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .imgframe {
+            gap: 4px;
+            display: flex;
+        }
+    </style>
+
+    <main class="container mt-5">
+        <ul class="list-group g-3">
+            {{ range .Item }}
+            <li class="list-group-item cardneo">
+                <div>
+                    <small class="text-muted">{{ .IdHex }}</small>
+                    <div class="imgframe">
+                        <img src="/static/imgs/{{ .IdHex }}.jpg" style="max-width: 100px; max-width: 100px;"
+                            alt="Imagem">
+                        <div>
+                            <h1>{{ .Name }}</h1>
+                            <h6>{{ .Description }}</h6>
+                            <small class="text-muted">{{ .Type }}</small>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <form action="/admin/delete" method="post">
+                        <a class="btn btn-primary" href="/admin/edit/{{ .IdHex }}">Edit</a>
+                        <input type="hidden" name="id" value="{{ .IdHex }}">
+                        <button type="submit" class="btn btn-danger my-3"
+                            onclick="return confirm('Tem certeza?')">Excluir</button>
+                    </form>
+                </div>
+            </li>
+            {{ end }}
+
+
+        </ul>
+    </main>
+
+</body>
+
+</html>

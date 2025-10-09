@@ -70,7 +70,13 @@ func main() {
 			return
 		}
 
-		var total []Item
+		boloCaseiro := []Item{}
+		boloFesta := []Item{}
+		boloPote := []Item{}
+		doce := []Item{}
+		bebida := []Item{}
+		recheio := []Item{}
+		novidade := []Item{}
 		for cur.Next(ctx) {
 			var v Item
 			if err := cur.Decode(&v); err != nil {
@@ -82,19 +88,6 @@ func main() {
 			v.Url = fmt.Sprintf("https://servidordomal.fun/produto/%s", v.ID.Hex())
 			v.ImageLink = fmt.Sprintf("https://servidordomal.fun/static/imgs/%s.jpg", v.ID.Hex())
 
-			fmt.Println(v.Name)
-			total = append(total, v)
-		}
-
-		boloCaseiro := []Item{}
-		boloFesta := []Item{}
-		boloPote := []Item{}
-		doce := []Item{}
-		bebida := []Item{}
-		recheio := []Item{}
-		novidade := []Item{}
-
-		for _, v := range total {
 			switch v.Type {
 			case "boloCaseiro":
 				boloCaseiro = append(boloCaseiro, v)
@@ -340,6 +333,34 @@ func main() {
 		collection.DeleteOne(ctx, bson.M{"_id": id})
 
 		c.Redirect(303, "/admin")
+	})
+
+	r.POST("/admin", func(c *gin.Context) {
+
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+
+		cur, err := collection.Find(ctx, bson.M{})
+		if err != nil {
+
+			log.Println(err)
+			c.Status(500)
+			return
+		}
+		var items []Item
+		for cur.Next(ctx) {
+			var v Item
+			if err := cur.Decode(&v); err != nil {
+				log.Println(err)
+				c.Status(500)
+				return
+			}
+			items = append(items, v)
+		}
+
+		c.HTML(http.StatusOK, "adminpage.html", gin.H{
+			"Item": items,
+		})
 	})
 
 	if err := r.RunTLS(":443", "/etc/letsencrypt/live/servidordomal.fun/fullchain.pem", "/etc/letsencrypt/live/servidordomal.fun/privkey.pem"); err != nil {
