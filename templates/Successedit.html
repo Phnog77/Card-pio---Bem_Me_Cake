@@ -36,7 +36,7 @@
         <header class="text-center">
             <h1 class="text-center text-success">Operação bem sucedida!</h1>
             <h1 class="fw-bold">Editando produto</h1>
-            <small class="text-muted text-center">{{ .Item.ID }}</small>
+            <small class="text-muted text-center">{{ .Item.IdHex }}</small>
         </header>        
         <div class="card p-2">
             <form action="/admin/edit" method="post" enctype="multipart/form-data">
@@ -100,7 +100,7 @@
                     <input class="form-control-file col-4" type="file" id="image" name="image" accept=".jpg">
  
 
-                    <img id="preview" src="/static/imgs/{{ .Item.ID }}.jpg" alt="Pré-visualização" class="img-fluid mt-2" style="max-height: 200px; max-width: 200px; display: none;">
+                    <img id="preview" src="/static/imgs/{{ .Item.IdHex }}.jpg" alt="Pré-visualização" class="img-fluid mt-2" style="max-height: 200px; max-width: 200px; display: none;">
 
                 </div>
 
@@ -109,7 +109,7 @@
                 
             </form>
             <form action="/admin/delete" method="post">
-                <input type="hidden" name="item" id="item" value="{{ .Item.ID }}">
+                <input type="hidden" name="item" id="item" value="{{ .Item.IdHex }}">
                 <button type="submit" class="btn btn-danger my-3" onclick="return confirm('Tem certeza?')">Excluir</button>
             </form>
         </div>

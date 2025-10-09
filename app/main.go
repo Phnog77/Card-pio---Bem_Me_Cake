@@ -30,6 +30,7 @@ type Item struct {
 	Url         string
 	SmallPriceF string
 	BigPriceF   string
+	IdHex       string
 }
 
 const URI = "mongodb://localhost:27017/"
@@ -133,6 +134,8 @@ func main() {
 		defer cancel()
 
 		var item Item
+
+		item.IdHex = idHex
 
 		if err := collection.FindOne(ctx, bson.M{"_id": id}).Decode(&item); err != nil {
 			log.Println(err)
