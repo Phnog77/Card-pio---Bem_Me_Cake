@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 	"strconv"
@@ -148,7 +149,7 @@ func main() {
 
 		c.HTML(200, "ginEdit.html", gin.H{
 			"Item":            item,
-			"JSONIngredients": string(jsonB),
+			"JSONIngredients": template.JS(string(jsonB)),
 		})
 	})
 
