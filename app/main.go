@@ -123,6 +123,8 @@ func main() {
 
 	r.GET("/admin/edit/:id", func(c *gin.Context) {
 		idHex := c.Param("id")
+		var item Item
+		item.IdHex = idHex
 
 		id, err := bson.ObjectIDFromHex(idHex)
 		if err != nil {
@@ -133,10 +135,6 @@ func main() {
 
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 		defer cancel()
-
-		var item Item
-
-		item.IdHex = idHex
 
 		if err := collection.FindOne(ctx, bson.M{"_id": id}).Decode(&item); err != nil {
 			log.Println(err)
