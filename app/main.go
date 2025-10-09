@@ -60,7 +60,7 @@ func main() {
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 		defer cancel()
 
-		cur, err := collection.Find(ctx, bson.M{"type": "bolo"})
+		cur, err := collection.Find(ctx, bson.M{"type": "boloCaseiro"})
 		if err != nil {
 
 			log.Println(err)
@@ -184,6 +184,7 @@ func main() {
 
 		file, err := c.FormFile("image")
 		if err != nil {
+			fmt.Println(err)
 			c.JSON(400, gin.H{"erro": "é necessário uma imagem para adicionar um produto"})
 			return
 		}
