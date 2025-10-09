@@ -2,9 +2,12 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -14,7 +17,7 @@ import (
 )
 
 type Item struct {
-	ID          bson.ObjectID `bson:"_id"`
+	ID          bson.ObjectID `bson:"_id,omitempty"`
 	Name        string        `bson:"name"`
 	SmallPrice  int           `bson:"s_price"`
 	BigPrice    int           `bson:"b_price"`
@@ -59,7 +62,10 @@ func main() {
 
 		cur, err := collection.Find(ctx, bson.M{"type": "bolo"})
 		if err != nil {
+
 			log.Println(err)
+			c.Status(500)
+			return
 		}
 
 		var total []Item
@@ -68,6 +74,7 @@ func main() {
 			if err := cur.Decode(&v); err != nil {
 				log.Println(err)
 				c.Status(500)
+				return
 			}
 
 			v.Url = fmt.Sprintf("https://servidordomal.fun/produto/%s", v.ID.Hex())
@@ -81,18 +88,20 @@ func main() {
 	})
 
 	r.GET("/produto/:id", func(c *gin.Context) {
-		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-		defer cancel()
 
 		id, err := bson.ObjectIDFromHex(c.Param("id"))
 		if err != nil {
 			log.Println(err)
 			c.Status(400)
+			return
 		}
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
 		var v Item
 		if err := collection.FindOne(ctx, bson.M{"_id": id}).Decode(&v); err != nil {
 			log.Println(err)
 			c.Status(500)
+			return
 		}
 
 		v.ImageLink = fmt.Sprintf("https://servidordomal.fun/static/imgs/%s.jpg", c.Param("id"))
@@ -100,6 +109,171 @@ func main() {
 		v.SmallPriceF = fmt.Sprintf("%.2f", float64(v.SmallPrice)/100)
 		v.BigPriceF = fmt.Sprintf("%.2f", float64(v.BigPrice)/100)
 		c.HTML(200, "ginDetailsTemplate.html", gin.H{"Item": v})
+	})
+
+	r.GET("/admin/add", func(c *gin.Context) {
+		c.HTML(200, "Add.html", gin.H{})
+	})
+	r.GET("/admin/add?success=true", func(c *gin.Context) {
+		c.HTML(200, "Success.html", gin.H{})
+	})
+
+	r.GET("/admin/edit/:id", func(c *gin.Context) {
+		idHex := c.Param("id")
+
+		id, err := bson.ObjectIDFromHex(idHex)
+		if err != nil {
+			log.Println(err)
+			c.Status(400)
+			return
+		}
+
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+
+		var item Item
+
+		if err := collection.FindOne(ctx, bson.M{"_id": id}).Decode(&item); err != nil {
+			log.Println(err)
+			c.Status(400)
+			return
+		}
+
+		jsonB, err := json.Marshal(item.Ingredients)
+		if err != nil {
+			log.Println(err)
+			c.Status(500)
+			return
+		}
+
+		c.HTML(200, "ginEdit.html", gin.H{
+			"Item":            item,
+			"JSONIngredients": string(jsonB),
+		})
+	})
+
+	r.POST("/admin/add", func(c *gin.Context) {
+		var item Item
+		var err error
+
+		item.Name = c.PostForm("name")
+		item.SmallPrice, err = strconv.Atoi(c.PostForm("s_price"))
+		if err != nil {
+			log.Println(err)
+			c.Status(400)
+			return
+		}
+		item.BigPrice, err = strconv.Atoi(c.PostForm("b_price"))
+		if err != nil {
+			log.Println(err)
+			c.Status(400)
+			return
+		}
+		item.Description = c.PostForm("description")
+		if len(c.PostForm("ingredients")) <= 0 {
+			c.JSON(400, gin.H{"erro": "o produto precisa ter ingredientes"})
+			return
+		}
+		if err := json.Unmarshal([]byte(c.PostForm("ingredients")), &item.Ingredients); err != nil {
+			log.Println(err)
+			c.Status(400)
+			return
+		}
+
+		item.Type = c.PostForm("type")
+
+		file, err := c.FormFile("image")
+		if err != nil {
+			c.JSON(400, gin.H{"erro": "é necessário uma imagem para adicionar um produto"})
+			return
+		}
+
+		if !strings.HasSuffix(file.Filename, ".jpg") {
+			c.JSON(400, gin.H{"erro": "somente .jpg permitido"})
+			return
+		}
+
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+
+		res, err := collection.InsertOne(ctx, item)
+		if err != nil {
+			log.Println(err)
+			c.Status(500)
+			return
+		}
+
+		id, ok := res.InsertedID.(bson.ObjectID)
+		if !ok {
+			log.Println("failed to get objectid")
+			c.Status(500)
+			return
+		}
+
+		if err := c.SaveUploadedFile(file, fmt.Sprintf("./static/imgs/%s.jpg", id.Hex()), 0777); err != nil {
+			log.Println(err)
+			c.Status(500)
+			return
+		}
+
+		c.Redirect(303, "/admin/add?success=true")
+	})
+
+	r.POST("/admin/edit", func(c *gin.Context) {
+		var item Item
+		var err error
+
+		item.ID, err = bson.ObjectIDFromHex(c.PostForm("id"))
+		if err != nil {
+			log.Println(err)
+			c.Status(400)
+			return
+		}
+		item.Name = c.PostForm("name")
+		item.SmallPrice, err = strconv.Atoi(c.PostForm("s_price"))
+		if err != nil {
+			log.Println(err)
+			c.Status(400)
+			return
+		}
+		item.BigPrice, err = strconv.Atoi(c.PostForm("b_price"))
+		if err != nil {
+			log.Println(err)
+			c.Status(400)
+			return
+		}
+		item.Description = c.PostForm("description")
+		if len(c.PostForm("ingredients")) <= 0 {
+			c.JSON(400, gin.H{"erro": "o produto precisa ter ingredientes"})
+			return
+		}
+		if err := json.Unmarshal([]byte(c.PostForm("ingredients")), &item.Ingredients); err != nil {
+			log.Println(err)
+			c.Status(400)
+			return
+		}
+
+		item.Type = c.PostForm("type")
+
+		file, err := c.FormFile("image")
+		if err == nil {
+			if !strings.HasSuffix(file.Filename, ".jpg") {
+				c.JSON(400, gin.H{"erro": "somente .jpg permitido"})
+				return
+			}
+			if err := c.SaveUploadedFile(file, fmt.Sprintf("./static/imgs/%s.jpg", item.ID.Hex()), 0777); err != nil {
+				log.Println(err)
+				c.Status(500)
+				return
+			}
+		}
+
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+
+		collection.ReplaceOne(ctx, bson.M{"_id": item.ID}, item)
+
+		c.Redirect(303, "/admin")
 	})
 
 	if err := r.RunTLS(":443", "/etc/letsencrypt/live/servidordomal.fun/fullchain.pem", "/etc/letsencrypt/live/servidordomal.fun/privkey.pem"); err != nil {
