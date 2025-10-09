@@ -124,7 +124,6 @@ func main() {
 	r.GET("/admin/edit/:id", func(c *gin.Context) {
 		idHex := c.Param("id")
 		var item Item
-		item.IdHex = idHex
 
 		id, err := bson.ObjectIDFromHex(idHex)
 		if err != nil {
@@ -141,6 +140,8 @@ func main() {
 			c.Status(400)
 			return
 		}
+
+		item.IdHex = idHex
 
 		jsonB, err := json.Marshal(item.Ingredients)
 		if err != nil {
