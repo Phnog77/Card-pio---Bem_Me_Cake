@@ -123,7 +123,7 @@ const lista = document.getElementById('list');
 const addBtn = document.getElementById('add');
 const hiddenField = document.getElementById('ingredientsHidden');
 
-let allIngredients = {{ .JSONIngredients }};
+let allIngredients = {{ .JSONIngredients | safeJS }};
 
 addBtn.addEventListener('click', () => {
     const value = input.value.trim();
