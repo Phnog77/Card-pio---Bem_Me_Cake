@@ -114,10 +114,11 @@ func main() {
 	})
 
 	r.GET("/admin/add", func(c *gin.Context) {
+		if c.Query("success") == "true" {
+			c.HTML(200, "Success.html", gin.H{})
+			return
+		}
 		c.HTML(200, "Add.html", gin.H{})
-	})
-	r.GET("/admin/add?success=true", func(c *gin.Context) {
-		c.HTML(200, "Success.html", gin.H{})
 	})
 
 	r.GET("/admin/edit/:id", func(c *gin.Context) {
@@ -150,10 +151,19 @@ func main() {
 			return
 		}
 
+		if c.Query("success") == "true" {
+			c.HTML(200, "Successedit.html", gin.H{
+				"Item":            item,
+				"JSONIngredients": template.JS(string(jsonB)),
+			})
+			return
+		}
+
 		c.HTML(200, "ginEdit.html", gin.H{
 			"Item":            item,
 			"JSONIngredients": template.JS(string(jsonB)),
 		})
+
 	})
 
 	r.POST("/admin/add", func(c *gin.Context) {
