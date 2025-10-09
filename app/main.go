@@ -329,4 +329,25 @@ func main() {
 		panic(err)
 	}
 
+	r.POST("/admin/delete", func(c *gin.Context) {
+
+		id, err := bson.ObjectIDFromHex(c.PostForm("id"))
+		if err != nil {
+			log.Println(err)
+			c.Status(400)
+			return
+		}
+
+		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+
+		collection.DeleteOne(ctx, bson.M{"_id": id})
+
+		c.Redirect(303, "/admin")
+	})
+
+	if err := r.RunTLS(":443", "/etc/letsencrypt/live/servidordomal.fun/fullchain.pem", "/etc/letsencrypt/live/servidordomal.fun/privkey.pem"); err != nil {
+		panic(err)
+	}
+
 }
