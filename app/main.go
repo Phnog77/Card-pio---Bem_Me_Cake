@@ -329,7 +329,7 @@ func main() {
 		panic(err)
 	}
 
-	r.POST("/admin/delete", func(c *gin.Context) {
+	r.POST("/admin/delete/:id", func(c *gin.Context) {
 
 		id, err := bson.ObjectIDFromHex(c.PostForm("id"))
 		if err != nil {
