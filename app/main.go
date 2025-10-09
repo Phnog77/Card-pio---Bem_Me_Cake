@@ -106,8 +106,8 @@ func main() {
 
 		v.ImageLink = fmt.Sprintf("https://servidordomal.fun/static/imgs/%s.jpg", c.Param("id"))
 
-		v.SmallPriceF = fmt.Sprintf("%.2f", float64(v.SmallPrice)/100)
-		v.BigPriceF = fmt.Sprintf("%.2f", float64(v.BigPrice)/100)
+		v.SmallPriceF = fmt.Sprintf("R$ %.2f", float64(v.SmallPrice)/100)
+		v.BigPriceF = fmt.Sprintf("R$ %.2f", float64(v.BigPrice)/100)
 		c.HTML(200, "ginDetailsTemplate.html", gin.H{"Item": v})
 	})
 
