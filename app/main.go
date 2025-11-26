@@ -366,7 +366,7 @@ func main() {
 		})
 	})
 
-	if err := r.RunTLS(":443", "/etc/letsencrypt/live/servidordomal.fun/fullchain.pem", "/etc/letsencrypt/live/servidordomal.fun/privkey.pem"); err != nil {
+	r.Run(":443")
 		panic(err)
 	}
 
