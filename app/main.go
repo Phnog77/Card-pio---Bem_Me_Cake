@@ -34,7 +34,7 @@ type Item struct {
 	IdHex       string
 }
 
-const URI = "mongodb://host.docker.internal:27017/"
+const URI = "mongodb://localhost:27017/"
 
 func main() {
 
