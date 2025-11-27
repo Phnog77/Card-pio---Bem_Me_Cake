@@ -4,12 +4,12 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 
-COPY . .
+COPY ./app ./app
 
-RUN go build -o server ./app
+RUN CGO_ENABLED=0 go build -o server ./app
 
 FROM alpine:latest
-WORKDIR /root/
+WORKDIR /app
 
 COPY --from=builder /app/server .
 
@@ -17,4 +17,7 @@ COPY templates ./templates
 COPY static ./static
 
 EXPOSE 443
+
+
+RUN ls -l
 CMD ["./server"]
