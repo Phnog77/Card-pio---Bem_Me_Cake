@@ -203,7 +203,7 @@ func main() {
 
 		item.Prices = make(map[string]float32)
 		if err := json.Unmarshal([]byte(c.PostForm("prices")), &item.Prices); err != nil {
-			c.JSON(400, gin.H{"erro": "malformed prices"})
+			c.JSON(400, gin.H{"erro": "malformed prices: " + err.Error()})
 			return
 		}
 
