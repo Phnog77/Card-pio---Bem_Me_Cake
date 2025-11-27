@@ -16,6 +16,8 @@ COPY --from=builder /app/server .
 COPY templates ./templates
 COPY static ./static
 
+VOLUME [ "./static/imgs" ]
+
 EXPOSE 443
 
 CMD ["./server"]

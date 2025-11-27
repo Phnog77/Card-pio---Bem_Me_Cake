@@ -86,8 +86,8 @@ func main() {
 				return
 			}
 
-			v.Url = fmt.Sprintf("https://servidordomal.fun/produto/%s", v.ID.Hex())
-			v.ImageLink = fmt.Sprintf("https://servidordomal.fun/static/imgs/%s.jpg", v.ID.Hex())
+			v.Url = fmt.Sprintf("http://bem_me_cake.opentty.xyz/produto/%s", v.ID.Hex())
+			v.ImageLink = fmt.Sprintf("http://bem_me_cake.opentty.xyz/static/imgs/%s.jpg", v.ID.Hex())
 
 			switch v.Type {
 			case "boloCaseiro":
@@ -135,7 +135,7 @@ func main() {
 			return
 		}
 
-		v.ImageLink = fmt.Sprintf("https://servidordomal.fun/static/imgs/%s.jpg", c.Param("id"))
+		v.ImageLink = fmt.Sprintf("http://bem_me_cake.opentty.xyz/static/imgs/%s.jpg", c.Param("id"))
 
 		v.SmallPriceF = fmt.Sprintf("R$ %.2f", float64(v.SmallPrice)/100)
 		v.BigPriceF = fmt.Sprintf("R$ %.2f", float64(v.BigPrice)/100)
