@@ -8,7 +8,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"strconv"
 	"strings"
 	"time"
 
@@ -19,18 +18,18 @@ import (
 )
 
 type Item struct {
-	ID          bson.ObjectID `bson:"_id,omitempty"`
-	Name        string        `bson:"name"`
-	SmallPrice  int           `bson:"s_price"`
-	BigPrice    int           `bson:"b_price"`
-	Description string        `bson:"description"`
-	Ingredients []string      `bson:"ingredients"`
-	Type        string        `bson:"type"`
-	Class       string        `bson:"class"`
+	ID   bson.ObjectID `bson:"_id,omitempty"`
+	Name string        `bson:"name"`
+
+	Prices         map[string]float32 `bson:"prices"`
+	PricesFormated map[string]string
+
+	Description string   `bson:"description"`
+	Ingredients []string `bson:"ingredients"`
+	Type        string   `bson:"type"`
+	Class       string   `bson:"class"`
 	ImageLink   string
 	Url         string
-	SmallPriceF string
-	BigPriceF   string
 	IdHex       string
 }
 
@@ -137,8 +136,10 @@ func main() {
 
 		v.ImageLink = fmt.Sprintf("http://bem_me_cake.opentty.xyz/static/imgs/%s.jpg", c.Param("id"))
 
-		v.SmallPriceF = fmt.Sprintf("R$ %.2f", float64(v.SmallPrice)/100)
-		v.BigPriceF = fmt.Sprintf("R$ %.2f", float64(v.BigPrice)/100)
+		v.PricesFormated = make(map[string]string)
+		for i, v1 := range v.Prices {
+			v.PricesFormated[i] = fmt.Sprintf("R$ %.2f", v1)
+		}
 		c.HTML(200, "ginDetailsTemplate.html", gin.H{"Item": v})
 	})
 
@@ -199,18 +200,13 @@ func main() {
 		var err error
 
 		item.Name = c.PostForm("name")
-		item.SmallPrice, err = strconv.Atoi(c.PostForm("s_price"))
-		if err != nil {
-			log.Println(err)
-			c.Status(400)
+
+		item.Prices = make(map[string]float32)
+		if err := json.Unmarshal([]byte(c.PostForm("prices")), &item.Prices); err != nil {
+			c.JSON(400, gin.H{"erro": "malformed prices"})
 			return
 		}
-		item.BigPrice, err = strconv.Atoi(c.PostForm("b_price"))
-		if err != nil {
-			log.Println(err)
-			c.Status(400)
-			return
-		}
+
 		item.Description = c.PostForm("description")
 		if len(c.PostForm("ingredients")) <= 0 {
 			c.JSON(400, gin.H{"erro": "o produto precisa ter ingredientes"})
@@ -273,18 +269,13 @@ func main() {
 			return
 		}
 		item.Name = c.PostForm("name")
-		item.SmallPrice, err = strconv.Atoi(c.PostForm("s_price"))
-		if err != nil {
-			log.Println(err)
-			c.Status(400)
+
+		item.Prices = make(map[string]float32)
+		if err := json.Unmarshal([]byte(c.PostForm("prices")), &item.Prices); err != nil {
+			c.JSON(400, gin.H{"erro": "malformed prices"})
 			return
 		}
-		item.BigPrice, err = strconv.Atoi(c.PostForm("b_price"))
-		if err != nil {
-			log.Println(err)
-			c.Status(400)
-			return
-		}
+
 		item.Description = c.PostForm("description")
 		if len(c.PostForm("ingredients")) <= 0 {
 			c.JSON(400, gin.H{"erro": "o produto precisa ter ingredientes"})
