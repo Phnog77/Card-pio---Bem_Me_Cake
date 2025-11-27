@@ -366,7 +366,7 @@ func main() {
 		})
 	})
 
-	r.Run(":443")
+	if err := r.Run(":443"); err != nil {
 		panic(err)
 	}
 
