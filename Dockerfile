@@ -18,6 +18,4 @@ COPY static ./static
 
 EXPOSE 443
 
-
-RUN ls -l
 CMD ["./server"]
