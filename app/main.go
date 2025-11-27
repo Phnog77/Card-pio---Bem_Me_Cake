@@ -138,7 +138,7 @@ func main() {
 
 		v.PricesFormated = make(map[string]string)
 		for i, v1 := range v.Prices {
-			v.PricesFormated[i] = fmt.Sprintf("R$ %.2f", v1)
+			v.PricesFormated[i] = fmt.Sprintf("R$ %.2f", v1/100)
 		}
 		c.HTML(200, "ginDetailsTemplate.html", gin.H{"Item": v})
 	})
