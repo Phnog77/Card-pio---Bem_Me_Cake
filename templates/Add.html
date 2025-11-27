@@ -216,35 +216,29 @@
         </main>
 
         <script>
-            // Elementos para preços
             const priceNameInput = document.getElementById("priceName");
             const priceValueInput = document.getElementById("priceValue");
             const addPriceBtn = document.getElementById("addPrice");
             const priceList = document.getElementById("priceList");
             const pricesHidden = document.getElementById("pricesHidden");
 
-            // Elementos para ingredientes
             const ingredientInput = document.getElementById("ingredient");
             const addIngredientBtn = document.getElementById("addIngredient");
             const ingredientList = document.getElementById("ingredientList");
             const ingredientsHidden =
                 document.getElementById("ingredientsHidden");
 
-            // Outros elementos
             const imageInput = document.getElementById("image");
             const preview = document.getElementById("preview");
             const typeOfItem = document.getElementById("type");
 
-            // Arrays para armazenar os dados
-            let allPrices = [];
+            let allPrices = {};
             let allIngredients = [];
 
-            // Função para formatar o valor em reais
             function formatPrice(value) {
                 return `R$ ${(value / 100).toFixed(2).replace(".", ",")}`;
             }
 
-            // Sistema de preços
             addPriceBtn.addEventListener("click", () => {
                 const name = priceNameInput.value.trim();
                 const value = priceValueInput.value.trim();
@@ -260,13 +254,8 @@
                     return;
                 }
 
-                // Adicionar ao array
-                allPrices.push({
-                    name: name,
-                    value: priceValue,
-                });
+                allPrices[name] = priceValue;
 
-                // Criar elemento na lista
                 const item = document.createElement("li");
                 item.classList.add("list-group-item", "price-item");
 
@@ -280,34 +269,70 @@
                     </button>
                 `;
 
-                // Adicionar evento de remoção
                 item.querySelector(".remove-price").addEventListener(
                     "click",
                     () => {
-                        removePrice(item, name, priceValue);
+                        removePrice(item, name);
                     },
                 );
 
                 priceList.appendChild(item);
 
-                // Atualizar campo hidden
                 pricesHidden.value = JSON.stringify(allPrices);
 
-                // Limpar campos
                 priceNameInput.value = "";
                 priceValueInput.value = "";
                 priceNameInput.focus();
             });
 
-            function removePrice(item, name, value) {
+            function removePrice(item, name) {
                 item.remove();
-                allPrices = allPrices.filter(
-                    (price) => !(price.name === name && price.value === value),
-                );
+
+                delete allPrices[name];
                 pricesHidden.value = JSON.stringify(allPrices);
             }
 
-            // Sistema de ingredientes (mantido similar)
+            function loadExistingPrices(pricesObj) {
+                priceList.innerHTML = "";
+                allPrices = pricesObj || {};
+
+                for (const [name, value] of Object.entries(allPrices)) {
+                    const item = document.createElement("li");
+                    item.classList.add("list-group-item", "price-item");
+
+                    item.innerHTML = `
+                        <div>
+                            <span class="price-name">${name}</span>:
+                            <span class="price-value">${formatPrice(value)}</span>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-danger remove-price">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+
+                    item.querySelector(".remove-price").addEventListener(
+                        "click",
+                        () => {
+                            removePrice(item, name);
+                        },
+                    );
+
+                    priceList.appendChild(item);
+                }
+
+                pricesHidden.value = JSON.stringify(allPrices);
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                if (typeof existingPrices !== "undefined") {
+                    loadExistingPrices(existingPrices);
+                } else {
+                    pricesHidden.value = JSON.stringify(allPrices);
+                }
+                ingredientsHidden.value = JSON.stringify(allIngredients);
+            });
+
+            // O resto do código permanece igual...
             addIngredientBtn.addEventListener("click", () => {
                 const value = ingredientInput.value.trim();
                 if (value === "") return;
@@ -333,7 +358,6 @@
                 ingredientsHidden.value = JSON.stringify(allIngredients);
             }
 
-            // Preview de imagem
             imageInput.addEventListener("change", () => {
                 const file = imageInput.files[0];
                 if (!file) return;
@@ -346,9 +370,7 @@
                 reader.readAsDataURL(file);
             });
 
-            // Inicializar ao carregar a página
             document.addEventListener("DOMContentLoaded", function () {
-                // Inicializar campos hidden
                 pricesHidden.value = JSON.stringify(allPrices);
                 ingredientsHidden.value = JSON.stringify(allIngredients);
             });
